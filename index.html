@@ -100,7 +100,7 @@ body::after { content:''; position:fixed; inset:0; pointer-events:none; backgrou
 
 /* ── SLIDES ──────────────────────────────────────────────── */
 #deck { width:100vw; height:100vh; position:relative; overflow:hidden; }
-.slide { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:5vw 9vw; opacity:0; transform:translateY(22px); transition:opacity 0.6s cubic-bezier(.4,0,.2,1), transform 0.6s cubic-bezier(.4,0,.2,1); pointer-events:none; }
+.slide { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:5vw 9vw; opacity:0; transform:translateY(22px); transition:opacity 0.6s cubic-bezier(.4,0,.2,1), transform 0.6s cubic-bezier(.4,0,.2,1); pointer-events:none; isolation:isolate; }
 .slide.active  { opacity:1; transform:translateY(0); pointer-events:all; }
 .slide.leaving { opacity:0; transform:translateY(-22px); }
 .tc { text-align:center; }
@@ -224,10 +224,11 @@ h3 em { font-style:italic; color:var(--mauve); }
 
   <!-- ══ 1 · COVER ══════════════════════════════════════════ -->
   <div class="slide active tc">
-    <div style="position:absolute;top:0;right:0;height:100%;width:62%;pointer-events:none;">
+    <div style="position:absolute;top:0;left:0;height:100%;width:62%;pointer-events:none;z-index:-1;">
       <img src="https://stabilization.vercel.app/images%20folder/Common%20Areas%20-%20Lobby%204%20(1).jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
-      <div style="position:absolute;inset:0;background:linear-gradient(to right,#09090F 0%,rgba(9,9,15,0.92) 16%,rgba(9,9,15,0.58) 42%,rgba(9,9,15,0.12) 72%,transparent 100%);"></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(to right,transparent 0%,rgba(9,9,15,0.1) 25%,rgba(9,9,15,0.82) 55%,#09090F 78%,#09090F 100%);"></div>
     </div>
+    <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;width:100%;">
     <div class="rule"></div>
     <div class="eyebrow">A Proposal · April 2026</div>
     <h1>A <em>new role</em><br>for an old address.</h1>
@@ -239,13 +240,15 @@ h3 em { font-style:italic; color:var(--mauve); }
     <div style="margin-top:2.4rem;font-family:var(--fd);font-style:italic;font-size:.86rem;letter-spacing:1.5px;color:var(--muted);">
       Historically Chic &nbsp;·&nbsp; Properly Charming &nbsp;·&nbsp; Professionally Managed
     </div>
+    </div>
   </div>
+  <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start;width:100%;">
 
   <!-- ══ 2 · 3-PRONGED STRATEGY OVERVIEW ════════════════════ -->
   <div class="slide tl" style="padding-left:50vw;padding-right:3vw;">
-    <div style="position:absolute;top:0;left:0;height:100%;width:54%;pointer-events:none;">
+    <div style="position:absolute;top:0;left:0;height:100%;width:54%;pointer-events:none;z-index:0;">
       <img src="https://stabilization.vercel.app/images%20folder/Common%20Areas%20-%20Exterior%201%20(1).jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center;">
-      <div style="position:absolute;inset:0;background:linear-gradient(to right,transparent 0%,rgba(9,9,15,0.25) 38%,rgba(9,9,15,0.82) 72%,#09090F 100%);"></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(to right,transparent 0%,rgba(9,9,15,0.2) 25%,rgba(9,9,15,0.9) 55%,#09090F 75%,#09090F 100%);"></div>
     </div>
     <div class="eyebrow">The Strategy</div>
     <h2>Built in 1834. <em>Still</em> unrepeatable.<br><em>Dramatically</em> underperforming.</h2>
@@ -605,7 +608,28 @@ document.addEventListener('touchend',e=>{
   const dy=e.changedTouches[0].clientY-ty;
   if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>45)go(cur+(dx<0?1:-1));
 },{passive:true});
-
+// Trackpad / mousewheel horizontal swipe
+let wt=0;
+document.addEventListener('wheel',e=>{
+  if(Math.abs(e.deltaX)<Math.abs(e.deltaY))return;
+  e.preventDefault();
+  const now=Date.now();
+  if(now-wt<600)return;
+  if(Math.abs(e.deltaX)>25){wt=now;go(cur+(e.deltaX>0?1:-1));}
+},{passive:false});  
+// Trackpad / horizontal wheel swipe
+let wheelCooldown = false;
+document.addEventListener('wheel', e => {
+  if(wheelCooldown) return;
+  const absX = Math.abs(e.deltaX);
+  const absY = Math.abs(e.deltaY);
+  if(absX < 20 && absY < 20) return;
+  if(absX > absY) {
+    go(cur + (e.deltaX > 0 ? 1 : -1));
+    wheelCooldown = true;
+    setTimeout(() => { wheelCooldown = false; }, 750);
+  }
+}, {passive: true});
 // Fade hint after 3s
 setTimeout(()=>{if(!hinted)hint.classList.add('gone');},3000);
 </script>
