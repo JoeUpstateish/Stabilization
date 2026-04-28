@@ -244,7 +244,7 @@ h3 em { font-style:italic; color:var(--mauve); }
   </div>
 
   <!-- ══ 2 · 3-PRONGED STRATEGY OVERVIEW ════════════════════ -->
-  <div class="slide tl" style="padding-left:50vw;padding-right:4vw;justify-content:flex-start;">
+  <div class="slide tl" style="padding-left:48vw;padding-right:9rem;justify-content:flex-start;">
     <div style="position:absolute;top:0;left:0;height:100%;width:54%;pointer-events:none;z-index:-1;">
       <img src="https://stabilization.vercel.app/images%20folder/Common%20Areas%20-%20Exterior%201%20(1).jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center;">
       <div style="position:absolute;inset:0;background:linear-gradient(to right,transparent 0%,rgba(9,9,15,0.2) 25%,rgba(9,9,15,0.9) 55%,#09090F 75%,#09090F 100%);"></div>
@@ -618,16 +618,17 @@ document.addEventListener('touchend',e=>{
 // Trackpad / horizontal wheel swipe
 let wheelCooldown = false;
 document.addEventListener('wheel', e => {
-  if(wheelCooldown) return;
   const absX = Math.abs(e.deltaX);
   const absY = Math.abs(e.deltaY);
   if(absX < 20 && absY < 20) return;
   if(absX > absY) {
+    e.preventDefault();
+    if(wheelCooldown) return;
     go(cur + (e.deltaX > 0 ? 1 : -1));
     wheelCooldown = true;
     setTimeout(() => { wheelCooldown = false; }, 750);
   }
-}, {passive: true});
+}, {passive: false});
 // Fade hint after 3s
 setTimeout(()=>{if(!hinted)hint.classList.add('gone');},3000);
 </script>
