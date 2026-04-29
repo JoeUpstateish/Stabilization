@@ -371,8 +371,8 @@ h3 em { font-style:italic; color:var(--mauve); }
           <div class="item">
             <div class="item-n">→</div>
             <div class="item-b">
-              <h3>Target: Corporate Relocation &amp; Extended Stay</h3>
-              <p>Law firms, finance, consulting, media — Gramercy Park is a natural landing zone. Monthly furnished rooms at $6,000–$9,000/month are standard. One room at $7,500/month outperforms $200/night at 60% occupancy.</p>
+              <h3>Target: Extended Stay &amp; Corporate Loyalty Programs</h3>
+              <p>Talent, model, theater, and film agencies. Law firms, finance, consulting, media — Gramercy Park is a natural landing zone. Partnering with a handful of the right clientele results in a steady booking flow for the shift to mid-term. Monthly furnished rooms at $6,000–$9,000/month are standard. One room at $7,500/month outperforms $200/night at 60% occupancy.</p>
             </div>
           </div>
           <div class="item">
@@ -386,7 +386,7 @@ h3 em { font-style:italic; color:var(--mauve); }
             <div class="item-n">→</div>
             <div class="item-b">
               <h3>MTR Platforms + Direct Corporate Outreach</h3>
-              <p>Furnished Finder, Kopa, and corporate relocation networks operate in a different ecosystem than Airbnb. Direct outreach to midtown firms builds a repeatable, low-friction pipeline that pays full rate every month.</p>
+              <p>10+ OTAs — online travel agencies — that operate in a different ecosystem than Airbnb. Direct outreach to target industries builds a repeatable, low-friction pipeline that pays closer to full rate every month.</p>
             </div>
           </div>
         </div>
@@ -396,13 +396,12 @@ h3 em { font-style:italic; color:var(--mauve); }
             <table class="tbl">
               <thead><tr><th>Mix</th><th>Rate / Mo</th><th>Units</th><th>Revenue</th></tr></thead>
               <tbody>
-                <tr><td>Corporate Relocation</td><td>$8,500</td><td>4</td><td class="gd">$34k</td></tr>
-                <tr><td>Extended Stay</td><td>$6,500</td><td>3</td><td class="gd">$19.5k</td></tr>
-                <tr><td>Monthly Furnished</td><td>$5,500</td><td>2</td><td class="gd">$11k</td></tr>
-                <tr class="hi"><td colspan="3"><strong>Total Room Revenue</strong></td><td class="pk">$64.5k</td></tr>
+                <tr><td>Large Suites</td><td>$9,000</td><td>5</td><td class="gd">$45k</td></tr>
+                <tr><td>Small Suites</td><td>$7,500</td><td>5</td><td class="gd">$37.5k</td></tr>
+                <tr class="hi"><td colspan="3"><strong>Total Room Revenue</strong></td><td class="pk">$82.5k</td></tr>
               </tbody>
             </table>
-            <p style="font-family:var(--fn);font-size:.63rem;color:var(--muted);margin-top:.85rem;letter-spacing:.5px;">9 rooms · stabilized 30-day mix · conservative rates</p>
+            <p style="font-family:var(--fn);font-size:.63rem;color:var(--muted);margin-top:.85rem;letter-spacing:.5px;">10 rooms · stabilized 30-day mix · conservative rates</p>
           </div>
           <p class="body" style="font-size:clamp(.76rem,1.05vw,.88rem);margin-top:.5rem;">More predictable. Legally clean. Operationally simpler than STR — with <em style="color:var(--mauve);">higher per-room monthly yield</em> at full occupancy.</p>
         </div>
@@ -414,7 +413,7 @@ h3 em { font-style:italic; color:var(--mauve); }
   <div class="slide tl" style="align-items:center;">
     <div style="max-width:880px;width:100%;">
       <div class="badge"><div class="n">III</div><span>Pillar Three of Three</span></div>
-      <h2>Rejuvenate Lady Mendl's.<br><em>Monetize</em> every square foot.</h2>
+      <h2>Bolster Lady Mendl's.<br><em>Monetize</em> every square foot.</h2>
       <div class="rule wide"></div>
       <div class="two-col">
         <div class="col">
@@ -598,13 +597,41 @@ function resetBars(){
   if(nyc) nyc.style.width='0%';
 }
 
-document.getElementById('arr-next').addEventListener('click',()=>go(cur+1));
-document.getElementById('arr-prev').addEventListener('click',()=>go(cur-1));
-
 document.addEventListener('keydown',e=>{
   if(e.key==='ArrowRight'||e.key==='ArrowDown')go(cur+1);
   if(e.key==='ArrowLeft'||e.key==='ArrowUp')go(cur-1);
 });
+
+// Push a history state for every slide so browser back hits our trap, not the previous URL
+function pushSlideState(index) {
+  history.pushState({ slide: index }, '', '#slide' + (index + 1));
+}
+
+// Intercept browser back/forward — redirect to slide navigation instead
+window.addEventListener('popstate', e => {
+  if (e.state && typeof e.state.slide === 'number') {
+    go(e.state.slide);
+  } else {
+    // Landed on a state with no slide info — push current slide back in so we stay
+    pushSlideState(cur);
+  }
+});
+
+// Seed history on load so there is always a state to pop back to
+pushSlideState(cur);
+
+// Wrap go() to keep history in sync — patch the existing go function
+const _goOriginal = go;
+// Override: after every slide change, push a new state
+const goWithHistory = (n) => {
+  const prev = cur;
+  _goOriginal(n);
+  if (cur !== prev) pushSlideState(cur);
+};
+document.getElementById('arr-next').removeEventListener('click', null);
+document.getElementById('arr-prev').removeEventListener('click', null);
+document.getElementById('arr-next').addEventListener('click', () => goWithHistory(cur + 1));
+document.getElementById('arr-prev').addEventListener('click', () => goWithHistory(cur - 1));
 
 // Touch swipe
 let tx=0,ty=0;
@@ -612,9 +639,9 @@ document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[
 document.addEventListener('touchend',e=>{
   const dx=e.changedTouches[0].clientX-tx;
   const dy=e.changedTouches[0].clientY-ty;
-  if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>45)go(cur+(dx<0?1:-1));
+  if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>45) goWithHistory(cur+(dx<0?1:-1));
 },{passive:true});
-  
+
 // Trackpad / horizontal wheel swipe
 let wheelCooldown = false;
 document.addEventListener('wheel', e => {
@@ -624,7 +651,7 @@ document.addEventListener('wheel', e => {
   if(absX > absY) {
     e.preventDefault();
     if(wheelCooldown) return;
-    go(cur + (e.deltaX > 0 ? 1 : -1));
+    goWithHistory(cur + (e.deltaX > 0 ? 1 : -1));
     wheelCooldown = true;
     setTimeout(() => { wheelCooldown = false; }, 750);
   }
