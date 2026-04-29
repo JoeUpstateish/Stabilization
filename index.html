@@ -24,7 +24,7 @@
   --fn: 'Jost', 'Helvetica Neue', sans-serif;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { width: 100%; height: 100%; background: var(--bg); font-family: var(--fn); color: var(--cream); overflow: hidden; }
+html, body { width: 100%; height: 100%; background: var(--bg); font-family: var(--fn); color: var(--cream); overflow: hidden; overscroll-behavior: none; }
 body::after { content:''; position:fixed; inset:0; pointer-events:none; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); opacity:0.03; z-index:9999; }
 
 /* ── CHROME ─────────────────────────────────────────────── */
@@ -99,35 +99,10 @@ body::after { content:''; position:fixed; inset:0; pointer-events:none; backgrou
 #swipe-hint.gone { opacity: 0; }
 
 /* ── SLIDES ──────────────────────────────────────────────── */
-#deck { width:100vw; height:100vh; position:relative; overflow:hidden; perspective:2000px; }
-.slide { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:2.8rem 9vw 3.8rem; opacity:0; pointer-events:none; isolation:isolate; overflow:hidden; will-change:transform,opacity; backface-visibility:hidden; }
+#deck { width:100vw; height:100vh; position:relative; overflow:hidden; }
+.slide { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:2.8rem 9vw 3.8rem; opacity:0; pointer-events:none; isolation:isolate; overflow:hidden; transition:opacity 380ms ease; }
 .slide.active { opacity:1; pointer-events:all; }
-
-/* ── PAGE TURN KEYFRAMES ─────────────────────────────────── */
-@keyframes exitFwd {
-  from { transform:rotateY(0deg);   opacity:1; }
-  55%  {                             opacity:0; }
-  to   { transform:rotateY(-88deg); opacity:0; }
-}
-@keyframes enterFwd {
-  from { transform:rotateY(88deg);  opacity:0; }
-  45%  {                             opacity:1; }
-  to   { transform:rotateY(0deg);   opacity:1; }
-}
-@keyframes exitBwd {
-  from { transform:rotateY(0deg);   opacity:1; }
-  55%  {                             opacity:0; }
-  to   { transform:rotateY(88deg);  opacity:0; }
-}
-@keyframes enterBwd {
-  from { transform:rotateY(-88deg); opacity:0; }
-  45%  {                             opacity:1; }
-  to   { transform:rotateY(0deg);   opacity:1; }
-}
-.slide.exit-fwd  { transform-origin:left center;  animation:exitFwd  580ms cubic-bezier(.4,0,.8,.2) forwards; }
-.slide.exit-bwd  { transform-origin:right center; animation:exitBwd  580ms cubic-bezier(.4,0,.8,.2) forwards; }
-.slide.enter-fwd { transform-origin:right center; animation:enterFwd 580ms cubic-bezier(.15,0,.2,1) forwards; }
-.slide.enter-bwd { transform-origin:left center;  animation:enterBwd 580ms cubic-bezier(.15,0,.2,1) forwards; }
+.slide.out { opacity:0; }
 .slide.leaving { opacity:0; transform:translateY(-22px); }
 .tc { text-align:center; }
 .tl { text-align:left; align-items:flex-start; }
@@ -681,108 +656,59 @@ function go(n){
   if(busy||n===cur||n<0||n>=total)return;
   if(!hinted){hint.classList.add('gone');hinted=true;}
   busy=true;
-  const dir = n > cur ? 'fwd' : 'bwd';
-  const p = cur;
-  cur = n;
+  const p=cur;
+  cur=n;
 
-  // Exit outgoing slide
   slides[p].classList.remove('active');
-  slides[p].classList.add('exit-'+dir);
+  slides[cur].classList.add('active');
 
-  // Enter incoming slide
-  slides[cur].classList.add('active','enter-'+dir);
-
-  // Animate bars on slide 3 (index 2)
   if(cur===2){
     setTimeout(()=>{
       const inn=document.getElementById('bar-inn');
       const nyc=document.getElementById('bar-nyc');
       if(inn) inn.style.width=`${(65.61/280)*100}%`;
       if(nyc) nyc.style.width=`${(265/280)*100}%`;
-    },300);
+    },200);
   }
 
-  // Cleanup after animation completes
-  setTimeout(()=>{
-    slides[p].classList.remove('exit-fwd','exit-bwd');
-    slides[p].style.opacity='0';
-    slides[cur].classList.remove('enter-fwd','enter-bwd');
-    busy=false;
-  },640);
+  // Use replaceState only — never pushState, so no new history entries are created
+  history.replaceState(null,'','#slide'+(cur+1));
 
+  setTimeout(()=>{ busy=false; }, 420);
   setUI();
 }
 
-// Reset bars when leaving slide 3
-function resetBars(){
-  const inn=document.getElementById('bar-inn');
-  const nyc=document.getElementById('bar-nyc');
-  if(inn) inn.style.width='0%';
-  if(nyc) nyc.style.width='0%';
-}
+document.getElementById('arr-next').addEventListener('click',()=>go(cur+1));
+document.getElementById('arr-prev').addEventListener('click',()=>go(cur-1));
 
 document.addEventListener('keydown',e=>{
   if(e.key==='ArrowRight'||e.key==='ArrowDown')go(cur+1);
   if(e.key==='ArrowLeft'||e.key==='ArrowUp')go(cur-1);
 });
 
-// Push a history state for every slide so browser back hits our trap, not the previous URL
-function pushSlideState(index) {
-  history.pushState({ slide: index }, '', '#slide' + (index + 1));
-}
-
-// Intercept browser back/forward — redirect to slide navigation instead
-window.addEventListener('popstate', e => {
-  if (e.state && typeof e.state.slide === 'number') {
-    go(e.state.slide);
-  } else {
-    // Hit the sealed base state — push two states back in so we never escape
-    history.pushState({ slide: cur }, '', '#slide' + (cur + 1));
-    history.pushState({ slide: cur }, '', '#slide' + (cur + 1));
-  }
-});
-
-// Seed history on load: REPLACE the initial entry (seals the real URL), then push a live state above it
-history.replaceState({ slide: cur, base: true }, '', '#slide' + (cur + 1));
-history.pushState({ slide: cur }, '', '#slide' + (cur + 1));
-
-// Wrap go() to keep history in sync — patch the existing go function
-const _goOriginal = go;
-// Override: after every slide change, push a new state
-const goWithHistory = (n) => {
-  const prev = cur;
-  _goOriginal(n);
-  if (cur !== prev) pushSlideState(cur);
-};
-document.getElementById('arr-next').removeEventListener('click', null);
-document.getElementById('arr-prev').removeEventListener('click', null);
-document.getElementById('arr-next').addEventListener('click', () => goWithHistory(cur + 1));
-document.getElementById('arr-prev').addEventListener('click', () => goWithHistory(cur - 1));
-
-// Touch swipe
+// Touch swipe (mobile)
 let tx=0,ty=0;
 document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY;},{passive:true});
 document.addEventListener('touchend',e=>{
   const dx=e.changedTouches[0].clientX-tx;
   const dy=e.changedTouches[0].clientY-ty;
-  if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>45) goWithHistory(cur+(dx<0?1:-1));
+  if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>45) go(cur+(dx<0?1:-1));
 },{passive:true});
 
-// Trackpad / horizontal wheel swipe
-let wheelCooldown = false;
-document.addEventListener('wheel', e => {
-  const absX = Math.abs(e.deltaX);
-  const absY = Math.abs(e.deltaY);
-  if(absX < 20 && absY < 20) return;
-  if(absX > absY) {
+// Trackpad swipe — passive:false + preventDefault blocks browser back gesture
+let wc=false;
+document.addEventListener('wheel',e=>{
+  const ax=Math.abs(e.deltaX), ay=Math.abs(e.deltaY);
+  if(ax<20&&ay<20)return;
+  if(ax>ay){
     e.preventDefault();
-    if(wheelCooldown) return;
-    goWithHistory(cur + (e.deltaX > 0 ? 1 : -1));
-    wheelCooldown = true;
-    setTimeout(() => { wheelCooldown = false; }, 750);
+    if(wc)return;
+    go(cur+(e.deltaX>0?1:-1));
+    wc=true;
+    setTimeout(()=>{wc=false;},700);
   }
-}, {passive: false});
-// Fade hint after 3s
+},{passive:false});
+
 setTimeout(()=>{if(!hinted)hint.classList.add('gone');},3000);
 </script>
 </body>
