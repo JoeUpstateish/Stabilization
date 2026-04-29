@@ -531,28 +531,22 @@ h3 em { font-style:italic; color:var(--mauve); }
       <div class="phase">
         <span class="pt">Months 1–3 · Foundation</span>
         <h3>Audit &amp; Activate</h3>
-        <p>Correct ADR. List event spaces. Establish dynamic pricing. Begin 30-day corporate outreach.</p>
-        <span class="rev">$35–45k</span>
-        <span class="rs">/ month projected</span>
+        <p>Correct ADR. List event spaces. Establish dynamic pricing. Continue 30-day outreach but with control and precision to compliment short term stays.</p>
       </div>
       <div class="phase">
         <span class="pt">Months 3–9 · Transition</span>
         <h3>Mix Shift</h3>
         <p>30-day bookings growing. Event calendar active. STR proportion declining as revenue rises.</p>
-        <span class="rev">$55–75k</span>
-        <span class="rs">/ month projected</span>
       </div>
       <div class="phase hi">
         <span class="pt">Month 12+ · Stabilized</span>
         <h3>Asset Stabilized</h3>
         <p>Legally clean. Predictable. Diversified revenue across 30-day rooms and events.</p>
-        <span class="rev">$84–101k</span>
-        <span class="rs">/ month projected</span>
       </div>
     </div>
     <div class="rule wide" style="max-width:700px;margin-top:1.3rem;"></div>
     <p class="body tc" style="text-align:center;">
-      At $101k/month stabilized: <strong style="color:var(--cream);">20% = $20,200/month</strong> to the booking manager. At current $20k: 20% = $4,000. The incentive is perfectly aligned — the only path to a higher fee is growing the property's revenue.
+      A 20% fee across all three pillars is not a cost — it is the engine. Every channel activated, every rate corrected, every booking filled pays for the engagement <em style="color:var(--mauve);">many times over.</em> The structure is designed to make this property more valuable, not more expensive to run.
     </p>
   </div>
 
@@ -575,7 +569,27 @@ h3 em { font-style:italic; color:var(--mauve); }
           </tr>
         </tbody>
       </table>
-      <p class="body">A property manager at 6% calls the plumber. They do not optimize ADR. They do not list Lady Mendl's on Splacer. They do not build a corporate relocation pipeline with a midtown law firm. This is a fundamentally different engagement — and the market prices it at 20–40%. The proposed 20% is the <em style="color:var(--mauve);">floor of full-service management</em>, applied to every revenue-generating asset this property has.</p>
+      <p class="body">A property manager at 6% calls the plumber. They do not optimize ADR. They do not list Lady Mendl's on 5+ event channels and manage the flow coordinating that with optimized short term rental bookings. They do not build an artistic relocation pipeline with talent agencies. This is a fundamentally different engagement — and the market prices it at 20–40%. The proposed 20% is the <em style="color:var(--mauve);">floor of full-service management</em>, applied to every revenue-generating asset this property has.</p>
+
+      <div style="margin-top:1.1rem;display:flex;justify-content:flex-end;">
+        <div style="max-width:340px;border:1px solid rgba(191,145,66,.18);border-radius:var(--r);padding:.7rem 1rem;background:rgba(191,145,66,.04);">
+          <div style="font-family:var(--fn);font-size:.54rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;">Market Compensation · Sources</div>
+          <div style="display:flex;flex-direction:column;gap:.38rem;">
+            <a href="https://www.lodgify.com/blog/vacation-rental-management-company/" target="_blank" rel="noopener" style="font-family:var(--fn);font-size:.6rem;color:var(--cream2);text-decoration:none;display:flex;gap:.5rem;align-items:flex-start;opacity:.82;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.82">
+              <span style="color:var(--gold-lt);margin-top:.05rem;">↗</span>
+              <span><strong style="color:var(--cream);">Lodgify</strong> — Full-service STR managers charge 25–40% of gross revenue. Industry overview with fee breakdown by service tier.</span>
+            </a>
+            <a href="https://www.vacasa.com/property-management" target="_blank" rel="noopener" style="font-family:var(--fn);font-size:.6rem;color:var(--cream2);text-decoration:none;display:flex;gap:.5rem;align-items:flex-start;opacity:.82;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.82">
+              <span style="color:var(--gold-lt);margin-top:.05rem;">↗</span>
+              <span><strong style="color:var(--cream);">Vacasa</strong> — One of the largest full-service vacation rental managers in the US. Published fee structure reflects the 25–35% full-service standard.</span>
+            </a>
+            <a href="https://ipropertymanagement.com/research/property-management-fees" target="_blank" rel="noopener" style="font-family:var(--fn);font-size:.6rem;color:var(--cream2);text-decoration:none;display:flex;gap:.5rem;align-items:flex-start;opacity:.82;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.82">
+              <span style="color:var(--gold-lt);margin-top:.05rem;">↗</span>
+              <span><strong style="color:var(--cream);">iPropertyManagement</strong> — Research report on property management fee benchmarks. Full-service and revenue-management roles documented at 20–40%.</span>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -674,13 +688,15 @@ window.addEventListener('popstate', e => {
   if (e.state && typeof e.state.slide === 'number') {
     go(e.state.slide);
   } else {
-    // Landed on a state with no slide info — push current slide back in so we stay
-    pushSlideState(cur);
+    // Hit the sealed base state — push two states back in so we never escape
+    history.pushState({ slide: cur }, '', '#slide' + (cur + 1));
+    history.pushState({ slide: cur }, '', '#slide' + (cur + 1));
   }
 });
 
-// Seed history on load so there is always a state to pop back to
-pushSlideState(cur);
+// Seed history on load: REPLACE the initial entry (seals the real URL), then push a live state above it
+history.replaceState({ slide: cur, base: true }, '', '#slide' + (cur + 1));
+history.pushState({ slide: cur }, '', '#slide' + (cur + 1));
 
 // Wrap go() to keep history in sync — patch the existing go function
 const _goOriginal = go;
