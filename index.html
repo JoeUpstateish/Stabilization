@@ -409,13 +409,15 @@ h3 em { font-style:italic; color:var(--mauve); }
     </div>
   </div>
 
-  <!-- ══ 5 · PILLAR III — EVENTS ═════════════════════════════ -->
+<!-- ══ 5 · PILLAR III — EVENTS ═════════════════════════════ -->
   <div class="slide tl" style="align-items:center;">
-    <div style="max-width:880px;width:100%;">
+    <div style="max-width:900px;width:100%;">
       <div class="badge"><div class="n">III</div><span>Pillar Three of Three</span></div>
-      <h2>Bolster Lady Mendl's.<br><em>Monetize</em> every square foot.</h2>
+      <h2>Rejuvenate Lady Mendl's.<br><em>Monetize</em> every square foot.</h2>
       <div class="rule wide"></div>
       <div class="two-col">
+
+        <!-- LEFT: bullets -->
         <div class="col">
           <div class="item">
             <div class="item-n">→</div>
@@ -428,7 +430,7 @@ h3 em { font-style:italic; color:var(--mauve); }
             <div class="item-n">→</div>
             <div class="item-b">
               <h3>The Library</h3>
-              <p>Currently priced at $900/hr — well below comparable private event spaces in Gramercy and Flatiron. Proposed rate: $1,350/hr. With 6 target sessions per week, this space alone becomes a meaningful, recurring revenue line.</p>
+              <p>Currently priced at $900/hr — well below comparable private event spaces in Gramercy and Flatiron. Proposed rate: $1,350/hr. With 4–6 target sessions per week, this space alone becomes a meaningful, recurring revenue line.</p>
             </div>
           </div>
           <div class="item">
@@ -439,26 +441,86 @@ h3 em { font-style:italic; color:var(--mauve); }
             </div>
           </div>
         </div>
+
+        <!-- RIGHT: interactive projection panel -->
         <div class="col">
-          <div class="card">
-            <div class="eyebrow">Event Revenue Projection</div>
-            <table class="tbl">
-              <thead><tr><th>Space</th><th>Proposed Rate</th><th>Sessions / Wk</th><th>Proj. / Mo</th></tr></thead>
-              <tbody>
-                <tr><td class="dm" style="font-size:.68rem;letter-spacing:.5px;">Current · Tea Salon</td><td class="dm">$1,800/hr · 2hr min</td><td class="dm">Word of mouth</td><td class="dm">—</td></tr>
-                <tr><td><strong>Tea Salon</strong></td><td class="gd">$2,400/hr · 2hr min</td><td class="pk">6× / week</td><td class="pk">~$115k</td></tr>
-                <tr><td class="dm" style="font-size:.68rem;letter-spacing:.5px;">Current · Library</td><td class="dm">$900/hr</td><td class="dm">Word of mouth</td><td class="dm">—</td></tr>
-                <tr><td><strong>The Library</strong></td><td class="gd">$1,350/hr</td><td class="pk">6× / week</td><td class="pk">~$65k</td></tr>
-                <tr class="hi"><td colspan="3"><strong>Combined Projection</strong></td><td class="pk">~$180k / mo</td></tr>
-              </tbody>
-            </table>
-            <p style="font-family:var(--fn);font-size:.63rem;color:var(--muted);margin-top:.85rem;letter-spacing:.5px;">Uplifted from current $1,800 and $900/hr respectively · at full target occupancy · excludes film & production shoot fees</p>
+          <div class="card gb" style="padding:1rem 1.2rem;">
+            <div class="eyebrow" style="margin-bottom:.7rem;">Event Revenue Projection</div>
+
+            <!-- Tea Salon slider -->
+            <div style="margin-bottom:.9rem;">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.35rem;">
+                <span style="font-family:var(--fn);font-size:.6rem;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--cream2);">Tea Salon</span>
+                <span style="font-family:var(--fn);font-size:.58rem;color:var(--muted);letter-spacing:.5px;">$2,400/hr · 2hr min · <span id="ts-sessions">4</span>× / wk</span>
+              </div>
+              <input type="range" id="ts-slider" min="4" max="6" value="4" step="1"
+                style="width:100%;accent-color:var(--gold);cursor:pointer;margin-bottom:.3rem;">
+              <div style="display:flex;justify-content:space-between;font-family:var(--fn);font-size:.55rem;color:var(--muted);letter-spacing:.5px;">
+                <span>4× / wk</span><span>5× / wk</span><span>6× / wk</span>
+              </div>
+              <div style="margin-top:.4rem;font-family:var(--fd);font-size:1.5rem;color:var(--gold-lt);font-weight:300;" id="ts-result">$76,800 / mo</div>
+            </div>
+
+            <div style="height:1px;background:rgba(237,121,233,.1);margin:.2rem 0 .9rem;"></div>
+
+            <!-- Library slider -->
+            <div style="margin-bottom:.9rem;">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.35rem;">
+                <span style="font-family:var(--fn);font-size:.6rem;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--cream2);">The Library</span>
+                <span style="font-family:var(--fn);font-size:.58rem;color:var(--muted);letter-spacing:.5px;">$1,350/hr · 2hr min · <span id="lib-sessions">4</span>× / wk</span>
+              </div>
+              <input type="range" id="lib-slider" min="4" max="6" value="4" step="1"
+                style="width:100%;accent-color:var(--gold);cursor:pointer;margin-bottom:.3rem;">
+              <div style="display:flex;justify-content:space-between;font-family:var(--fn);font-size:.55rem;color:var(--muted);letter-spacing:.5px;">
+                <span>4× / wk</span><span>5× / wk</span><span>6× / wk</span>
+              </div>
+              <div style="margin-top:.4rem;font-family:var(--fd);font-size:1.5rem;color:var(--gold-lt);font-weight:300;" id="lib-result">$43,200 / mo</div>
+            </div>
+
+            <div style="height:1px;background:rgba(237,121,233,.1);margin:.2rem 0 .75rem;"></div>
+
+            <!-- Combined total -->
+            <div style="background:rgba(237,121,233,.07);border:1px solid rgba(237,121,233,.22);border-radius:8px;padding:.6rem .9rem;display:flex;justify-content:space-between;align-items:center;">
+              <div>
+                <div style="font-family:var(--fn);font-size:.56rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mauve);">Combined Monthly</div>
+                <div style="font-family:var(--fn);font-size:.52rem;color:var(--muted);letter-spacing:.5px;margin-top:.15rem;">room fee only · all spaces</div>
+              </div>
+              <div style="font-family:var(--fd);font-weight:300;font-size:2rem;color:var(--pink);line-height:1;" id="total-result">$120,000</div>
+            </div>
+
+            <p style="font-family:var(--fn);font-size:.56rem;color:var(--muted);margin-top:.6rem;letter-spacing:.5px;">Room fee only · excludes F&amp;B, gratuity, and platform fees</p>
           </div>
-          <p class="body" style="font-size:clamp(.76rem,1.05vw,.88rem);margin-top:.5rem;">Currently: no booking system, no platform presence, no channel strategy — <em style="color:var(--mauve);">word of mouth only.</em> At full target occupancy, these two spaces alone represent over $180k/month. Every week without a system is revenue left on the table.</p>
+
+          <p class="body" style="font-size:clamp(.72rem,.98vw,.84rem);margin-top:.45rem;">Currently: no booking system, no platform presence, no channel strategy — <em style="color:var(--mauve);">word of mouth only.</em> At full target occupancy, these two spaces alone represent over $180k/month. Every week without a system is revenue left on the table.</p>
         </div>
+
       </div>
     </div>
   </div>
+
+  <script>
+  // Page 5 interactive sliders
+  (function(){
+    const tsSlider  = document.getElementById('ts-slider');
+    const libSlider = document.getElementById('lib-slider');
+    function fmt(n){ return '$' + n.toLocaleString('en-US'); }
+    function calc(){
+      const ts  = parseInt(tsSlider.value);
+      const lib = parseInt(libSlider.value);
+      const tsMo  = 2400 * 2 * ts * 4;   // rate × 2hr min × sessions × 4 weeks
+      const libMo = 1350 * 2 * lib * 4;
+      const total = tsMo + libMo;
+      document.getElementById('ts-sessions').textContent  = ts;
+      document.getElementById('lib-sessions').textContent = lib;
+      document.getElementById('ts-result').textContent    = fmt(tsMo)  + ' / mo';
+      document.getElementById('lib-result').textContent   = fmt(libMo) + ' / mo';
+      document.getElementById('total-result').textContent = fmt(total);
+    }
+    tsSlider.addEventListener('input', calc);
+    libSlider.addEventListener('input', calc);
+    calc();
+  })();
+  </script>
 
   <!-- ══ 6 · COMBINED PROJECTION ═════════════════════════════ -->
   <div class="slide tc">
