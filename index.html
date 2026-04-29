@@ -99,9 +99,35 @@ body::after { content:''; position:fixed; inset:0; pointer-events:none; backgrou
 #swipe-hint.gone { opacity: 0; }
 
 /* ── SLIDES ──────────────────────────────────────────────── */
-#deck { width:100vw; height:100vh; position:relative; overflow:hidden; }
-.slide { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:2.8rem 9vw 3.8rem; opacity:0; transform:translateY(22px); transition:opacity 0.6s cubic-bezier(.4,0,.2,1), transform 0.6s cubic-bezier(.4,0,.2,1); pointer-events:none; isolation:isolate; overflow:hidden; }
-.slide.active  { opacity:1; transform:translateY(0); pointer-events:all; }
+#deck { width:100vw; height:100vh; position:relative; overflow:hidden; perspective:2000px; }
+.slide { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:2.8rem 9vw 3.8rem; opacity:0; pointer-events:none; isolation:isolate; overflow:hidden; will-change:transform,opacity; backface-visibility:hidden; }
+.slide.active { opacity:1; pointer-events:all; }
+
+/* ── PAGE TURN KEYFRAMES ─────────────────────────────────── */
+@keyframes exitFwd {
+  from { transform:rotateY(0deg);   opacity:1; }
+  55%  {                             opacity:0; }
+  to   { transform:rotateY(-88deg); opacity:0; }
+}
+@keyframes enterFwd {
+  from { transform:rotateY(88deg);  opacity:0; }
+  45%  {                             opacity:1; }
+  to   { transform:rotateY(0deg);   opacity:1; }
+}
+@keyframes exitBwd {
+  from { transform:rotateY(0deg);   opacity:1; }
+  55%  {                             opacity:0; }
+  to   { transform:rotateY(88deg);  opacity:0; }
+}
+@keyframes enterBwd {
+  from { transform:rotateY(-88deg); opacity:0; }
+  45%  {                             opacity:1; }
+  to   { transform:rotateY(0deg);   opacity:1; }
+}
+.slide.exit-fwd  { transform-origin:left center;  animation:exitFwd  580ms cubic-bezier(.4,0,.8,.2) forwards; }
+.slide.exit-bwd  { transform-origin:right center; animation:exitBwd  580ms cubic-bezier(.4,0,.8,.2) forwards; }
+.slide.enter-fwd { transform-origin:right center; animation:enterFwd 580ms cubic-bezier(.15,0,.2,1) forwards; }
+.slide.enter-bwd { transform-origin:left center;  animation:enterBwd 580ms cubic-bezier(.15,0,.2,1) forwards; }
 .slide.leaving { opacity:0; transform:translateY(-22px); }
 .tc { text-align:center; }
 .tl { text-align:left; align-items:flex-start; }
@@ -655,21 +681,35 @@ function go(n){
   if(busy||n===cur||n<0||n>=total)return;
   if(!hinted){hint.classList.add('gone');hinted=true;}
   busy=true;
-  const p=cur;
+  const dir = n > cur ? 'fwd' : 'bwd';
+  const p = cur;
+  cur = n;
+
+  // Exit outgoing slide
   slides[p].classList.remove('active');
-  slides[p].classList.add('leaving');
-  cur=n;
-  slides[cur].classList.add('active');
-  // animate bars on slide 3 (index 2)
+  slides[p].classList.add('exit-'+dir);
+
+  // Enter incoming slide
+  slides[cur].classList.add('active','enter-'+dir);
+
+  // Animate bars on slide 3 (index 2)
   if(cur===2){
     setTimeout(()=>{
       const inn=document.getElementById('bar-inn');
       const nyc=document.getElementById('bar-nyc');
       if(inn) inn.style.width=`${(65.61/280)*100}%`;
       if(nyc) nyc.style.width=`${(265/280)*100}%`;
-    },200);
+    },300);
   }
-  setTimeout(()=>{slides[p].classList.remove('leaving');busy=false;},640);
+
+  // Cleanup after animation completes
+  setTimeout(()=>{
+    slides[p].classList.remove('exit-fwd','exit-bwd');
+    slides[p].style.opacity='0';
+    slides[cur].classList.remove('enter-fwd','enter-bwd');
+    busy=false;
+  },640);
+
   setUI();
 }
 
