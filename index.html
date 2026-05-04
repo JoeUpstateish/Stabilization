@@ -202,54 +202,34 @@ h3 em { font-style:italic; color:var(--mauve); }
 
 .vs-d { font-family:var(--fd); font-style:italic; font-size:1.7rem; color:var(--muted); opacity:.38; }
 
-/* ── PROFORMA SLIDE ──────────────────────────────────────── */
-.pf-scroll { width:100%; height:100%; overflow-y:auto; padding:1.9rem 9vw 2.8rem; scrollbar-width:thin; scrollbar-color:rgba(237,121,233,.25) transparent; }
+/* ── PROFORMA ────────────────────────────────────────────────── */
+.pf-scroll { width:100%; height:100%; overflow-y:auto; padding:1.5rem 2.2rem 2rem; scrollbar-width:thin; scrollbar-color:rgba(237,121,233,.2) transparent; }
 .pf-scroll::-webkit-scrollbar { width:4px; }
 .pf-scroll::-webkit-scrollbar-track { background:transparent; }
-.pf-scroll::-webkit-scrollbar-thumb { background:rgba(237,121,233,.25); border-radius:4px; }
-
-.pf-tab {
-  font-family:var(--fn); font-size:.6rem; font-weight:700; letter-spacing:1.8px;
-  text-transform:uppercase; color:var(--muted);
-  border:1px solid rgba(140,128,112,.28); border-radius:60px;
-  padding:.3rem .9rem; background:transparent; cursor:pointer; transition:all .22s;
-}
-.pf-tab:hover:not(.pf-on) { color:var(--cream2); border-color:rgba(140,128,112,.5); }
-.pf-tab.pf-on { color:var(--pink); border-color:rgba(237,121,233,.5); background:rgba(237,121,233,.08); }
+.pf-scroll::-webkit-scrollbar-thumb { background:rgba(237,121,233,.2); border-radius:4px; }
 
 .pf-scen {
-  font-family:var(--fn); font-size:.57rem; font-weight:700; letter-spacing:1.5px;
+  font-family:var(--fn); font-size:.56rem; font-weight:700; letter-spacing:1.5px;
   text-transform:uppercase; color:var(--muted);
   border:1px solid rgba(140,128,112,.22); border-radius:60px;
-  padding:.24rem .7rem; background:transparent; cursor:pointer; transition:all .2s;
+  padding:.22rem .65rem; background:transparent; cursor:pointer; transition:all .2s;
 }
 .pf-scen:hover:not(.pf-scen-on) { color:var(--cream2); border-color:rgba(140,128,112,.45); }
 .pf-scen.pf-scen-on { color:var(--gold-lt); border-color:rgba(212,170,101,.5); background:rgba(212,170,101,.09); }
 
-.pf-slider { -webkit-appearance:none; appearance:none; flex:1; height:3px; border-radius:60px; background:rgba(237,121,233,.18); outline:none; cursor:pointer; }
-.pf-slider::-webkit-slider-thumb { -webkit-appearance:none; width:13px; height:13px; border-radius:50%; background:var(--pink); cursor:pointer; box-shadow:0 0 7px rgba(237,121,233,.45); }
-.pf-slider::-moz-range-thumb { width:13px; height:13px; border-radius:50%; background:var(--pink); cursor:pointer; border:none; box-shadow:0 0 7px rgba(237,121,233,.45); }
-
-.pf-panel { display:none; }
-.pf-panel.pf-active { display:block; }
+.pf-lbl { font-family:var(--fn); font-size:.52rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; }
 
 .pf-tbl { width:100%; border-collapse:collapse; }
-.pf-tbl th { font-family:var(--fn); font-size:.52rem; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; color:var(--gold); padding:.28rem .7rem; text-align:left; border-bottom:1px solid rgba(191,145,66,.22); }
-.pf-tbl td { font-family:var(--fn); font-size:.68rem; font-weight:300; color:var(--cream2); padding:.3rem .7rem; border-bottom:1px solid rgba(237,121,233,.05); }
-.pf-tbl tr.hi td { color:var(--cream); background:rgba(237,121,233,.05); }
-.pf-tbl td.pk { color:var(--pink); font-weight:500; }
-.pf-tbl td.gd { color:var(--gold-lt); }
-.pf-tbl td.dm { color:var(--muted); }
-.pf-tbl tfoot td { border-bottom:none; border-top:1px solid rgba(191,145,66,.25); }
+.pf-tbl th { font-family:var(--fn); font-size:.5rem; font-weight:700; letter-spacing:1.6px; text-transform:uppercase; color:var(--gold); padding:.26rem .55rem; text-align:left; border-bottom:1px solid rgba(191,145,66,.2); white-space:nowrap; }
+.pf-tbl td { font-family:var(--fn); font-size:.65rem; font-weight:300; color:var(--cream2); padding:.28rem .55rem; border-bottom:1px solid rgba(237,121,233,.05); }
+.pf-tbl tr.hi td { background:rgba(237,121,233,.05); }
+.pf-tbl tfoot td { border-top:1px solid rgba(191,145,66,.22); border-bottom:none; }
+.pf-tbl th.str-h { color:var(--gold-lt); }
+.pf-tbl th.mtr-h { color:var(--pink); }
 
-.pf-stat-mini { display:flex; gap:1.4rem; flex-wrap:wrap; }
-.pf-stat-mini .s-val { font-family:var(--fd); font-weight:300; font-size:clamp(1.3rem,2.2vw,1.85rem); line-height:1; display:block; }
-.pf-stat-mini .s-lbl { font-family:var(--fn); font-size:.52rem; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; color:var(--muted); display:block; margin-top:.3rem; }
-
-.pf-glow { background:rgba(237,121,233,.05); border:1px solid rgba(237,121,233,.24); border-radius:var(--r); padding:.85rem 1.05rem; }
-.pf-gold { background:rgba(191,145,66,.05); border:1px solid rgba(191,145,66,.24); border-radius:var(--r); padding:.85rem 1.05rem; }
-.pf-note { background:rgba(212,170,101,.05); border:1px solid rgba(212,170,101,.18); border-radius:var(--r); padding:.55rem .85rem; }
-.pf-label { font-family:var(--fn); font-size:.52rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:.5rem; }
+.pf-mode { font-family:var(--fn); font-size:.52rem; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; border-radius:60px; padding:.18rem .5rem; cursor:pointer; transition:all .18s; border:1px solid; }
+.pf-mode.str-mode { color:var(--gold-lt); border-color:rgba(212,170,101,.45); background:rgba(212,170,101,.08); }
+.pf-mode.mtr-mode { color:var(--pink); border-color:rgba(237,121,233,.45); background:rgba(237,121,233,.1); }
 </style>
 </head>
 <body>
@@ -680,265 +660,111 @@ h3 em { font-style:italic; color:var(--mauve); }
   <!-- ══ 9 · REVENUE PROFORMA ══════════════════════════════════ -->
   <div class="slide tl" style="padding:0;overflow:hidden;">
     <div class="pf-scroll">
-      <div style="max-width:940px;width:100%;">
+      <div style="max-width:1260px;width:100%;margin:0 auto;">
 
-        <!-- Header -->
-        <div class="eyebrow">Revenue Proforma · 2026–2027</div>
-        <h2 style="font-size:clamp(1.2rem,2.2vw,2rem);line-height:1.12;margin-bottom:.25rem;">Three revenue streams. <em>One</em> property.</h2>
-        <div class="rule wide" style="margin-bottom:.85rem;"></div>
-
-        <!-- Tab Row -->
-        <div style="display:flex;gap:.45rem;margin-bottom:1rem;align-items:center;">
-          <button class="pf-tab pf-on" onclick="pfSwitch('str',this)"><span style="font-style:italic;font-family:var(--fd);margin-right:.3rem;">I</span> Short-Term</button>
-          <button class="pf-tab" onclick="pfSwitch('mtr',this)"><span style="font-style:italic;font-family:var(--fd);margin-right:.3rem;">II</span> Mid-Term</button>
-          <button class="pf-tab" onclick="pfSwitch('evt',this)"><span style="font-style:italic;font-family:var(--fd);margin-right:.3rem;">III</span> Events</button>
-        </div>
-
-        <!-- ─ STR PANEL ─────────────────────────────────────── -->
-        <div id="pf-str" class="pf-panel pf-active">
-          <div class="two-col" style="align-items:flex-start;gap:clamp(1rem,2.2vw,2rem);">
-
-            <!-- LEFT: 2026 Actuals -->
-            <div class="col" style="gap:.55rem;">
-              <div class="pf-label" style="color:var(--gold);">2026 Actuals (YTD)</div>
-              <div class="pf-stat-mini" style="margin-bottom:.2rem;">
-                <div><span class="s-val gd">$122.6k</span><span class="s-lbl">Recorded Rev</span></div>
-                <div><span class="s-val pk">$242</span><span class="s-lbl">Portfolio ADR</span></div>
-                <div><span class="s-val" style="color:var(--cream2);">$65.61</span><span class="s-lbl">RevPAR</span></div>
-                <div><span class="s-val" style="color:var(--muted);">506</span><span class="s-lbl">Total Nights</span></div>
-              </div>
-
-              <!-- Unpriced assumption -->
-              <div class="card" style="margin-bottom:0;">
-                <div class="pf-label" style="color:var(--mauve);">Assumption · Unpriced Bookings</div>
-                <p style="font-family:var(--fs);font-size:.75rem;color:var(--cream2);line-height:1.58;margin-bottom:.5rem;">16 of 71 bookings (22.5%) have no recorded price. Estimated at:</p>
-                <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.3rem;">
-                  <input type="range" id="str-adr-adj" min="150" max="450" value="242" step="1" class="pf-slider">
-                  <span style="font-family:var(--fd);font-size:1.35rem;color:var(--gold-lt);min-width:3.2rem;" id="str-adr-val">$242</span>
-                </div>
-                <div style="font-family:var(--fn);font-size:.56rem;color:var(--muted);letter-spacing:.5px;">Estimated unpriced revenue: <span id="str-unpriced-est" style="color:var(--gold-lt);">$3,872</span> · Adjusted total: <span id="str-adj-total" style="color:var(--cream);">$126,487</span></div>
-              </div>
-
-              <!-- Top rooms table -->
-              <div class="card gb">
-                <div class="pf-label" style="color:var(--gold);">Top Rooms by ADR · 2026</div>
-                <table class="pf-tbl">
-                  <thead><tr><th>Room</th><th>ADR</th><th>Nights</th><th>Revenue</th></tr></thead>
-                  <tbody>
-                    <tr><td>#3 Madame Olenska</td><td class="pk">$447</td><td class="dm">45</td><td class="gd">$20,116</td></tr>
-                    <tr><td>#4 Irving</td><td class="pk">$412</td><td class="dm">28</td><td class="gd">$11,532</td></tr>
-                    <tr><td>#6 Edith Wharton</td><td class="pk">$348</td><td class="dm">39</td><td class="gd">$13,575</td></tr>
-                    <tr><td>#2 O'Henry</td><td>$283</td><td class="dm">78</td><td>$22,103</td></tr>
-                    <tr><td>#5 Stanford White</td><td>$277</td><td class="dm">52</td><td>$14,408</td></tr>
-                    <tr><td>#1 Washington</td><td>$214</td><td class="dm">74</td><td>$15,857</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <!-- RIGHT: 2027 Forecast -->
-            <div class="col" style="gap:.55rem;">
-              <div class="pf-label" style="color:var(--gold);">2027 Forecast · Adjustable Inputs</div>
-
-              <div class="card">
-                <div class="pf-label" style="color:var(--mauve);">Target ADR</div>
-                <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.65rem;">
-                  <input type="range" id="str-adr27" min="200" max="600" value="320" step="5" class="pf-slider">
-                  <span style="font-family:var(--fd);font-size:1.5rem;color:var(--pink);min-width:3.2rem;" id="str-adr27-val">$320</span>
-                </div>
-                <div class="pf-label" style="color:var(--mauve);">Target Occupancy</div>
-                <div style="display:flex;align-items:center;gap:.7rem;">
-                  <input type="range" id="str-occ27" min="30" max="95" value="65" step="1" class="pf-slider">
-                  <span style="font-family:var(--fd);font-size:1.5rem;color:var(--pink);min-width:3.2rem;" id="str-occ27-val">65%</span>
-                </div>
-              </div>
-
-              <div class="pf-glow">
-                <div class="pf-label" style="color:var(--pink);">2027 Projection · 9 Rooms · 365 Days</div>
-                <div class="pf-stat-mini" style="margin-bottom:.65rem;">
-                  <div><span class="s-val pk" id="str-revpar27">$208</span><span class="s-lbl">RevPAR</span></div>
-                  <div><span class="s-val gd" id="str-rev27">$683k</span><span class="s-lbl">Annual Revenue</span></div>
-                  <div><span class="s-val" style="color:var(--mauve);" id="str-fee27">$137k</span><span class="s-lbl">Mgmt Fee (20%)</span></div>
-                </div>
-                <div class="rule wide" style="margin:.3rem 0 .5rem;"></div>
-                <div style="display:flex;justify-content:space-between;">
-                  <div><span style="font-family:var(--fn);font-size:.52rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;display:block;">vs 2026 Recorded</span><span style="font-family:var(--fd);font-size:1.2rem;" id="str-uplift">+$561k</span></div>
-                  <div style="text-align:right;"><span style="font-family:var(--fn);font-size:.52rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;display:block;">Room-Nights Available</span><span style="font-family:var(--fd);font-size:1.2rem;color:var(--cream2);">3,285</span></div>
-                </div>
-              </div>
-
-              <div class="pf-note">
-                <p style="font-family:var(--fn);font-size:.56rem;color:var(--muted);line-height:1.65;">NYC boutique comp set ADR: <strong style="color:var(--gold-lt);">$350–$450</strong>. Market RevPAR avg: <strong style="color:var(--gold-lt);">$265–$280</strong>. Projection assumes dynamic pricing, corrected OTA listings, and managed calendar strategy.</p>
-              </div>
-            </div>
+        <!-- ── Slide header ───────────────────────────────────── -->
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:.55rem;">
+          <div>
+            <div class="eyebrow" style="margin-bottom:.18rem;">Revenue Proforma · 2026–2027</div>
+            <h2 style="font-size:clamp(1rem,1.9vw,1.7rem);line-height:1.1;">Three streams. <em>One</em> portfolio.</h2>
+          </div>
+          <div style="display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;padding-bottom:.1rem;">
+            <span class="pf-lbl" style="color:var(--muted);">MTR Occ:</span>
+            <button class="pf-scen" onclick="pf2_setMtrOcc(70,this)">70%</button>
+            <button class="pf-scen pf-scen-on" onclick="pf2_setMtrOcc(85,this)">85%</button>
+            <button class="pf-scen" onclick="pf2_setMtrOcc(100,this)">100%</button>
+            <span style="font-family:var(--fn);font-size:.52rem;color:var(--muted);margin-left:.5rem;letter-spacing:.4px;">STR prop occ <strong style="color:var(--gold-lt);">75%</strong> · YTD annualized ×1.20</span>
           </div>
         </div>
+        <div class="rule wide" style="margin-bottom:.8rem;"></div>
 
-        <!-- ─ MTR PANEL ─────────────────────────────────────── -->
-        <div id="pf-mtr" class="pf-panel">
-          <div style="display:flex;gap:.4rem;margin-bottom:.85rem;align-items:center;flex-wrap:wrap;">
-            <span style="font-family:var(--fn);font-size:.56rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--muted);margin-right:.2rem;">Occupancy Scenario:</span>
-            <button class="pf-scen pf-scen-on" onclick="mtrScen(70,this)">70% · Conservative</button>
-            <button class="pf-scen" onclick="mtrScen(85,this)">85% · Moderate</button>
-            <button class="pf-scen" onclick="mtrScen(100,this)">100% · Full</button>
-          </div>
-          <div class="two-col" style="align-items:flex-start;gap:clamp(1rem,2.2vw,2rem);">
+        <!-- ── Three-box grid ─────────────────────────────────── -->
+        <div style="display:grid;grid-template-columns:1fr 390px;grid-template-rows:auto auto;gap:.8rem;align-items:start;">
 
-            <!-- LEFT: Room table -->
-            <div class="col">
-              <table class="pf-tbl">
-                <thead><tr><th>Room</th><th>List Rate</th><th>At Scenario</th><th>Annual</th></tr></thead>
-                <tbody id="mtr-tbody"></tbody>
-                <tfoot>
-                  <tr>
-                    <td style="font-family:var(--fn);font-size:.64rem;font-weight:700;color:var(--cream);letter-spacing:.5px;">10 Rooms Total</td>
-                    <td style="font-family:var(--fd);font-size:1.1rem;color:var(--gold-lt);padding:.35rem .7rem;">$91,000</td>
-                    <td style="font-family:var(--fd);font-size:1.1rem;color:var(--pink);padding:.35rem .7rem;" id="mtr-mo-total">$63,700</td>
-                    <td style="font-family:var(--fd);font-size:1.1rem;color:var(--gold-lt);padding:.35rem .7rem;" id="mtr-yr-total">$764,400</td>
-                  </tr>
-                </tfoot>
-              </table>
-              <div class="pf-note" style="margin-top:.5rem;">
-                <p style="font-family:var(--fn);font-size:.55rem;color:var(--muted);line-height:1.6;"><strong style="color:var(--gold-lt);">#10 Sarah Bernhardt</strong> rate defaulted to $9,500/mo — confirm with ownership. One room missing from brief; included at comparable rate.</p>
-              </div>
+          <!-- ╔══ BOX 3 · DETAILED ROOM VIEW ═══════════════════╗ -->
+          <!-- spans both row slots on the left -->
+          <div class="card" style="grid-row:1/3;padding:.7rem .85rem;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.55rem;gap:.5rem;flex-wrap:wrap;">
+              <div class="pf-lbl" style="color:var(--gold);">Detailed Room View</div>
+              <div style="font-family:var(--fn);font-size:.5rem;color:var(--muted);letter-spacing:.3px;">Toggle each room between STR-only and MTR+STR gap-fill modes</div>
             </div>
+            <table class="pf-tbl" style="width:100%;">
+              <thead>
+                <tr>
+                  <th rowspan="2" style="width:110px;">Room</th>
+                  <th colspan="4" class="str-h" style="text-align:center;padding-bottom:.15rem;border-bottom:1px solid rgba(212,170,101,.25);">Short Term</th>
+                  <th colspan="2" class="mtr-h" style="text-align:center;padding-bottom:.15rem;border-bottom:1px solid rgba(237,121,233,.2);">Mid Term</th>
+                  <th rowspan="2" style="text-align:center;width:44px;">Mode</th>
+                </tr>
+                <tr>
+                  <th class="str-h">Cur ADR</th>
+                  <th class="str-h">Cur Occ</th>
+                  <th class="str-h">Prop ADR</th>
+                  <th class="str-h">Prop Occ</th>
+                  <th class="mtr-h">Mo Rate</th>
+                  <th class="mtr-h">Occ %</th>
+                </tr>
+              </thead>
+              <tbody id="pf2-detail-tbody"></tbody>
+            </table>
+          </div>
 
-            <!-- RIGHT: Summary + ramp -->
-            <div class="col" style="gap:.55rem;">
-              <div class="pf-glow">
-                <div class="pf-label" style="color:var(--pink);">2027 Projection · 10 Rooms · 12 Months</div>
-                <div class="pf-stat-mini" style="margin-bottom:.65rem;">
-                  <div><span class="s-val pk" id="mtr-mo-stat">$63.7k</span><span class="s-lbl">Monthly Revenue</span></div>
-                  <div><span class="s-val gd" id="mtr-yr-stat">$764k</span><span class="s-lbl">Annual Revenue</span></div>
-                  <div><span class="s-val" style="color:var(--mauve);" id="mtr-fee-stat">$153k</span><span class="s-lbl">Mgmt Fee (20%)</span></div>
-                </div>
-              </div>
+          <!-- ╔══ BOX 1 · REVENUE OVERVIEW ═════════════════════╗ -->
+          <div class="card gb" style="grid-row:1;padding:.7rem .85rem;">
+            <div class="pf-lbl" style="color:var(--gold);margin-bottom:.55rem;">Revenue Overview · Annual</div>
+            <table class="pf-tbl" style="width:100%;">
+              <thead>
+                <tr>
+                  <th style="width:78px;">Room</th>
+                  <th class="str-h">Current</th>
+                  <th class="mtr-h">Prop MTR</th>
+                  <th style="color:var(--mauve);">STR Gap</th>
+                  <th>Total Prop</th>
+                </tr>
+              </thead>
+              <tbody id="pf2-rev-tbody"></tbody>
+              <tfoot>
+                <tr>
+                  <td style="font-family:var(--fn);font-size:.58rem;font-weight:700;color:var(--cream);letter-spacing:.5px;padding:.32rem .55rem;">Portfolio</td>
+                  <td style="font-family:var(--fd);font-size:.9rem;color:var(--gold-lt);padding:.32rem .55rem;" id="pf2-tot-cur">—</td>
+                  <td style="font-family:var(--fd);font-size:.9rem;color:var(--pink);padding:.32rem .55rem;" id="pf2-tot-mtr">—</td>
+                  <td style="font-family:var(--fd);font-size:.9rem;color:var(--mauve);padding:.32rem .55rem;" id="pf2-tot-gap">—</td>
+                  <td style="font-family:var(--fd);font-size:.9rem;font-weight:600;color:var(--cream);padding:.32rem .55rem;" id="pf2-tot-prop">—</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
 
-              <div class="card gb">
-                <div class="pf-label" style="color:var(--gold);">2026 Ramp Assumption</div>
-                <p style="font-family:var(--fs);font-size:.76rem;color:var(--cream2);line-height:1.6;margin-bottom:.6rem;">MTR pipeline assumes a Q3 2026 ramp — 6 months active in 2026, full 12 months in 2027.</p>
-                <div style="display:flex;gap:1.5rem;">
-                  <div>
-                    <div style="font-family:var(--fn);font-size:.52rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:.15rem;">2026 Est. (6 mo)</div>
-                    <div style="font-family:var(--fd);font-size:1.4rem;color:var(--gold-lt);" id="mtr-2026-est">$382k</div>
-                  </div>
-                  <div>
-                    <div style="font-family:var(--fn);font-size:.52rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:.15rem;">2027 Full Year</div>
-                    <div style="font-family:var(--fd);font-size:1.4rem;color:var(--pink);" id="mtr-2027-full">$764k</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card">
-                <div class="pf-label" style="color:var(--mauve);">Rate Benchmarks</div>
-                <table class="pf-tbl">
-                  <thead><tr><th>Tier</th><th>Rooms</th><th>Monthly Rate</th></tr></thead>
-                  <tbody>
-                    <tr><td>Premium Suites</td><td class="dm">6</td><td class="gd">$9,500</td></tr>
-                    <tr><td>Standard Suites</td><td class="dm">4</td><td class="gd">$7,500</td></tr>
-                    <tr class="hi"><td>Blended Avg</td><td class="dm">10</td><td class="pk">$9,100</td></tr>
-                  </tbody>
-                </table>
-              </div>
+          <!-- ╔══ BOX 2 · EVENTS OVERVIEW ══════════════════════╗ -->
+          <div class="card" style="grid-row:2;border-color:rgba(237,121,233,.2);padding:.7rem .85rem;">
+            <div class="pf-lbl" style="color:var(--pink);margin-bottom:.55rem;">Events Overview · Lady Mendl's · Monthly</div>
+            <table class="pf-tbl" style="width:100%;">
+              <thead>
+                <tr>
+                  <th>Space</th>
+                  <th>Cur Rate</th>
+                  <th>Cur/mo</th>
+                  <th class="str-h">Prop Rate</th>
+                  <th class="str-h">Prop/mo</th>
+                  <th>Cur Rev</th>
+                  <th class="mtr-h">Prop Rev</th>
+                </tr>
+              </thead>
+              <tbody id="pf2-evt-tbody"></tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="5" style="font-family:var(--fn);font-size:.58rem;font-weight:700;color:var(--cream);letter-spacing:.4px;padding:.3rem .55rem;">Monthly Total</td>
+                  <td style="font-family:var(--fd);font-size:.88rem;color:var(--gold-lt);padding:.3rem .55rem;" id="pf2-evt-cur">—</td>
+                  <td style="font-family:var(--fd);font-size:.88rem;color:var(--pink);padding:.3rem .55rem;" id="pf2-evt-prop">—</td>
+                </tr>
+              </tfoot>
+            </table>
+            <div style="font-family:var(--fn);font-size:.5rem;color:var(--muted);margin-top:.45rem;line-height:1.6;letter-spacing:.2px;">
+              20 events YTD (word-of-mouth) · est. 12 Tea Salon / 8 Library · Whole House rate estimated at $25,000/buyout · Proposed: Giggster, PartySlate, Peerspace, Splacer + film &amp; production
             </div>
           </div>
+
         </div>
-
-        <!-- ─ EVENTS PANEL ───────────────────────────────────── -->
-        <div id="pf-evt" class="pf-panel">
-          <div style="display:flex;gap:.4rem;margin-bottom:.85rem;align-items:center;flex-wrap:wrap;">
-            <span style="font-family:var(--fn);font-size:.56rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--muted);margin-right:.2rem;">Sessions / Week:</span>
-            <button class="pf-scen" onclick="evtScen(4,this)">4× / week</button>
-            <button class="pf-scen pf-scen-on" onclick="evtScen(5,this)">5× / week</button>
-            <button class="pf-scen" onclick="evtScen(6,this)">6× / week</button>
-            <span style="font-family:var(--fn);font-size:.54rem;color:var(--muted);margin-left:.4rem;">· 4 weeks / month · 2hr minimum per booking</span>
-          </div>
-          <div class="two-col" style="align-items:flex-start;gap:clamp(1rem,2.2vw,2rem);">
-
-            <!-- LEFT: Two rooms -->
-            <div class="col" style="gap:.55rem;">
-
-              <!-- Tea Salon -->
-              <div class="card" style="border-color:rgba(237,121,233,.28);">
-                <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;flex-wrap:wrap;gap:.3rem;">
-                  <div>
-                    <div class="pf-label" style="color:var(--pink);margin-bottom:.08rem;">Tea Salon</div>
-                    <div style="font-family:var(--fd);font-size:.82rem;color:var(--muted);">50 guests max · 2hr minimum</div>
-                  </div>
-                  <div style="text-align:right;">
-                    <div style="font-family:var(--fn);font-size:.5rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Current → Proposed / booking</div>
-                    <div style="font-family:var(--fd);font-size:1.1rem;"><span style="color:var(--muted);text-decoration:line-through;font-size:.88rem;opacity:.7;">$3,600</span> <span style="color:var(--muted);margin:0 .1rem;">→</span> <span style="color:var(--pink);">$4,800</span></div>
-                  </div>
-                </div>
-                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;text-align:center;padding:.3rem 0;">
-                  <div><div style="font-family:var(--fn);font-size:.5rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:.18rem;">Monthly</div><div style="font-family:var(--fd);font-size:1.4rem;color:var(--pink);" id="ts-mo">$96,000</div></div>
-                  <div><div style="font-family:var(--fn);font-size:.5rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:.18rem;">Annual</div><div style="font-family:var(--fd);font-size:1.4rem;color:var(--gold-lt);" id="ts-yr">$1.15M</div></div>
-                  <div><div style="font-family:var(--fn);font-size:.5rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:.18rem;">Rate Uplift</div><div style="font-family:var(--fd);font-size:1.4rem;color:var(--mauve);" id="ts-vs">+$24k/mo</div></div>
-                </div>
-              </div>
-
-              <!-- Library -->
-              <div class="card gb">
-                <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;flex-wrap:wrap;gap:.3rem;">
-                  <div>
-                    <div class="pf-label" style="color:var(--gold);margin-bottom:.08rem;">Library</div>
-                    <div style="font-family:var(--fd);font-size:.82rem;color:var(--muted);">25 guests max · 2hr minimum</div>
-                  </div>
-                  <div style="text-align:right;">
-                    <div style="font-family:var(--fn);font-size:.5rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Current → Proposed / booking</div>
-                    <div style="font-family:var(--fd);font-size:1.1rem;"><span style="color:var(--muted);text-decoration:line-through;font-size:.88rem;opacity:.7;">$1,800</span> <span style="color:var(--muted);margin:0 .1rem;">→</span> <span style="color:var(--gold-lt);">$2,700</span></div>
-                  </div>
-                </div>
-                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;text-align:center;padding:.3rem 0;">
-                  <div><div style="font-family:var(--fn);font-size:.5rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:.18rem;">Monthly</div><div style="font-family:var(--fd);font-size:1.4rem;color:var(--gold-lt);" id="lib-mo">$54,000</div></div>
-                  <div><div style="font-family:var(--fn);font-size:.5rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:.18rem;">Annual</div><div style="font-family:var(--fd);font-size:1.4rem;color:var(--gold-lt);" id="lib-yr">$648k</div></div>
-                  <div><div style="font-family:var(--fn);font-size:.5rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:.18rem;">Rate Uplift</div><div style="font-family:var(--fd);font-size:1.4rem;color:var(--mauve);" id="lib-vs">+$18k/mo</div></div>
-                </div>
-              </div>
-
-            </div>
-
-            <!-- RIGHT: Summary + F&B -->
-            <div class="col" style="gap:.55rem;">
-
-              <div class="pf-glow">
-                <div class="pf-label" style="color:var(--pink);">Combined · Room Fees Only (Proposed)</div>
-                <div class="pf-stat-mini" style="margin-bottom:.65rem;">
-                  <div><span class="s-val pk" id="evt-mo-total">$150,000</span><span class="s-lbl">Monthly</span></div>
-                  <div><span class="s-val gd" id="evt-yr-total">$1.80M</span><span class="s-lbl">Annual</span></div>
-                  <div><span class="s-val" style="color:var(--mauve);" id="evt-fee-total">$360k</span><span class="s-lbl">Mgmt Fee (20%)</span></div>
-                </div>
-                <div class="rule wide" style="margin:.1rem 0 .5rem;"></div>
-                <div style="display:flex;justify-content:space-between;">
-                  <div><span style="font-family:var(--fn);font-size:.52rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;display:block;">vs Current Rates</span><span style="font-family:var(--fd);font-size:1.15rem;color:var(--gold-lt);" id="evt-vs-current">+$42k/mo</span></div>
-                  <div style="text-align:right;"><span style="font-family:var(--fn);font-size:.52rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;display:block;">2026 Partial (Q3+)</span><span style="font-family:var(--fd);font-size:1.15rem;color:var(--cream2);" id="evt-2026-est">~$450k</span></div>
-                </div>
-              </div>
-
-              <!-- F&B Upside -->
-              <div class="pf-gold">
-                <div class="pf-label" style="color:var(--gold);">F&B Upside · Flagged Separately</div>
-                <table class="pf-tbl" style="margin-bottom:.5rem;">
-                  <thead><tr><th>Room</th><th>Per Event (wine pkg)</th><th>Monthly Add</th></tr></thead>
-                  <tbody>
-                    <tr><td>Tea Salon (50 pax)</td><td class="gd">$8,850</td><td class="gd" id="fb-ts-mo">$177,000</td></tr>
-                    <tr><td>Library (25 pax)</td><td class="gd">$4,425</td><td class="gd" id="fb-lib-mo">$88,500</td></tr>
-                    <tr class="hi"><td><strong>Blended Total</strong></td><td></td><td class="pk" id="fb-total-mo">$265,500</td></tr>
-                  </tbody>
-                </table>
-                <p style="font-family:var(--fn);font-size:.54rem;color:var(--muted);line-height:1.6;">Food $117/pp (5-course) · Beverage $30/pp/hr (wine tier) · 2hr session. Not in room fee base case — meaningful incremental upside.</p>
-              </div>
-
-              <!-- Current state -->
-              <div class="card">
-                <div class="pf-label" style="color:var(--mauve);">Current State · Zero Platform Presence</div>
-                <p style="font-family:var(--fs);font-size:.74rem;color:var(--cream2);line-height:1.62;">All bookings are word-of-mouth. No booking system in place. Rate increases not yet implemented. Proposed activation: <em style="color:var(--cream);">Giggster, PartySlate, Peerspace, Splacer</em> + film &amp; production shoots.</p>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </div>
@@ -1027,148 +853,197 @@ document.addEventListener('wheel',e=>{
 
 setTimeout(()=>{if(!hinted)hint.classList.add('gone');},3000);
 
-// ── PROFORMA MODEL ───────────────────────────────────────────────
+// ══ PROFORMA v2 ══════════════════════════════════════════════════
 
-// Tab switching
-function pfSwitch(tab, btn) {
-  document.querySelectorAll('.pf-panel').forEach(p => { p.classList.remove('pf-active'); });
-  document.querySelectorAll('.pf-tab').forEach(t => t.classList.remove('pf-on'));
-  document.getElementById('pf-' + tab).classList.add('pf-active');
-  btn.classList.add('pf-on');
-}
-
-// Format helpers
-function fmtDol(n) {
-  const abs = Math.abs(n);
-  const sign = n < 0 ? '-' : '';
-  if (abs >= 1000000) return sign + '$' + (abs/1000000).toFixed(2).replace(/\.?0+$/,'') + 'M';
-  if (abs >= 1000)    return sign + '$' + Math.round(abs/1000) + 'k';
-  return sign + '$' + Math.round(abs).toLocaleString();
-}
-function fmtDolFull(n) {
-  return '$' + Math.round(n).toLocaleString();
-}
-
-// ── STR MODEL ────────────────────────────────────────────────────
-function strUpdate() {
-  const adrAdj  = +document.getElementById('str-adr-adj').value;
-  const adr27   = +document.getElementById('str-adr27').value;
-  const occ27   = +document.getElementById('str-occ27').value;
-
-  document.getElementById('str-adr-val').textContent   = '$' + adrAdj;
-  document.getElementById('str-adr27-val').textContent  = '$' + adr27;
-  document.getElementById('str-occ27-val').textContent  = occ27 + '%';
-
-  const unpricedEst = 16 * adrAdj;
-  const adjTotal    = 122615 + unpricedEst;
-  document.getElementById('str-unpriced-est').textContent = fmtDolFull(unpricedEst);
-  document.getElementById('str-adj-total').textContent    = fmtDolFull(adjTotal);
-
-  const revpar27 = Math.round(adr27 * occ27 / 100);
-  const rev27    = revpar27 * 9 * 365;
-  const fee27    = rev27 * 0.20;
-  const uplift   = rev27 - 122615;
-
-  document.getElementById('str-revpar27').textContent = '$' + revpar27;
-  document.getElementById('str-rev27').textContent    = fmtDol(rev27);
-  document.getElementById('str-fee27').textContent    = fmtDol(fee27);
-
-  const upEl = document.getElementById('str-uplift');
-  upEl.textContent   = (uplift >= 0 ? '+' : '') + fmtDol(uplift);
-  upEl.style.color   = uplift >= 0 ? 'var(--gold-lt)' : '#E07070';
-}
-['str-adr-adj','str-adr27','str-occ27'].forEach(id => {
-  document.getElementById(id).addEventListener('input', strUpdate);
-});
-strUpdate();
-
-// ── MTR MODEL ────────────────────────────────────────────────────
-const mtrRooms = [
-  { name: '#1 Washington',            rate: 9500 },
-  { name: "#2 O'Henry",               rate: 7500 },
-  { name: '#3 Madame Olenska',        rate: 9500 },
-  { name: '#4 Irving',                rate: 9500 },
-  { name: '#5 Stanford White',        rate: 7500 },
-  { name: '#6 Edith Wharton',         rate: 9500 },
-  { name: '#7 Dvorak',                rate: 7500 },
-  { name: '#8 Evelyn Nesbit',         rate: 9500 },
-  { name: '#9 Lou Lou de la Falaise', rate: 7500 },
-  { name: '#10 Sarah Bernhardt',      rate: 9500, note: true },
+const PF2_ROOMS = [
+  { name:'#1 Washington',            strCurADR:214, strCurNights:74,  strCurRev:15857, strPropADR:280, strPropOcc:75, mtrRate:9500, mtrOn:false },
+  { name:"#2 O'Henry",               strCurADR:283, strCurNights:78,  strCurRev:22103, strPropADR:350, strPropOcc:75, mtrRate:7500, mtrOn:false },
+  { name:'#3 Madame Olenska',        strCurADR:447, strCurNights:45,  strCurRev:20116, strPropADR:500, strPropOcc:75, mtrRate:9500, mtrOn:false },
+  { name:'#4 Irving',                strCurADR:412, strCurNights:28,  strCurRev:11532, strPropADR:500, strPropOcc:75, mtrRate:9500, mtrOn:false },
+  { name:'#5 Stanford White',        strCurADR:277, strCurNights:52,  strCurRev:14408, strPropADR:350, strPropOcc:75, mtrRate:7500, mtrOn:false },
+  { name:'#6 Edith Wharton',         strCurADR:348, strCurNights:39,  strCurRev:13575, strPropADR:425, strPropOcc:75, mtrRate:9500, mtrOn:false },
+  { name:'#7 Dvorak',                strCurADR:105, strCurNights:136, strCurRev:14303, strPropADR:175, strPropOcc:75, mtrRate:7500, mtrOn:false },
+  { name:'#8 Evelyn Nesbit',         strCurADR:158, strCurNights:16,  strCurRev:2534,  strPropADR:250, strPropOcc:75, mtrRate:9500, mtrOn:false },
+  { name:'#9 Lou Lou de la Falaise', strCurADR:215, strCurNights:38,  strCurRev:8187,  strPropADR:280, strPropOcc:75, mtrRate:7500, mtrOn:false },
+  { name:'#10 Sarah Bernhardt',      strCurADR:null,strCurNights:0,   strCurRev:0,     strPropADR:null,strPropOcc:0,  mtrRate:9500, mtrOn:true  },
 ];
-let mtrOcc = 70;
 
-function mtrBuild() {
-  const tbody = document.getElementById('mtr-tbody');
-  const occ   = mtrOcc / 100;
-  let totalMo = 0;
-  tbody.innerHTML = '';
-  mtrRooms.forEach(r => {
-    const adj = Math.round(r.rate * occ);
-    totalMo  += adj;
-    const yr  = adj * 12;
-    const tr  = document.createElement('tr');
-    if (r.note) tr.classList.add('hi');
-    tr.innerHTML = `<td>${r.name}${r.note ? ' <span style="font-size:.5rem;color:var(--gold);letter-spacing:.5px;">· est.</span>' : ''}</td><td class="gd">${fmtDolFull(r.rate)}</td><td class="pk">${fmtDolFull(adj)}</td><td>${fmtDolFull(yr)}</td>`;
-    tbody.appendChild(tr);
+const PF2_EVENTS = [
+  { name:'Tea Salon',   cap:'50 guests', curRate:3600,  curEvMo:1.2, propRate:4800,  propEvMo:20 },
+  { name:'Library',     cap:'25 guests', curRate:1800,  curEvMo:0.8, propRate:2700,  propEvMo:20 },
+  { name:'Whole House', cap:'Full buyout',curRate:0,    curEvMo:0,   propRate:25000, propEvMo:2  },
+];
+
+// YTD: Jan 1 – Oct 31, 2026 = 304 days; annualize to 365
+const PF2_YTD = 304;
+const PF2_ANN = 365 / PF2_YTD;
+let   PF2_MTR_OCC = 85;
+
+function pf2$(id){ return document.getElementById(id); }
+
+function pf2_fmtK(n){
+  if(n == null) return '—';
+  const a = Math.abs(n), s = n < 0 ? '-' : '';
+  if(a >= 1e6)  return s + '$' + (a/1e6).toFixed(1).replace(/\.0$/,'') + 'M';
+  if(a >= 1000) return s + '$' + Math.round(a/1000) + 'k';
+  return s + '$' + Math.round(a).toLocaleString();
+}
+function pf2_fmtD(n){ return n ? '$' + Math.round(n).toLocaleString() : '—'; }
+
+function pf2_calcRoom(r){
+  const curRev  = Math.round(r.strCurRev * PF2_ANN);
+  const curOcc  = r.strCurNights > 0 ? Math.round(r.strCurNights / PF2_YTD * 100) : 0;
+  const occ     = PF2_MTR_OCC;
+  const vacFrac = (100 - occ) / 100;
+
+  let propMTR = 0, propGap = 0, propSTR = 0;
+  if(r.mtrOn){
+    propMTR = Math.round(r.mtrRate * 12 * occ / 100);
+    propGap = r.strPropADR ? Math.round(r.strPropADR * 365 * vacFrac) : 0;
+  } else if(r.strPropADR){
+    propSTR = Math.round(r.strPropADR * 365 * r.strPropOcc / 100);
+  }
+  return { curRev, curOcc, propMTR, propGap, propSTR };
+}
+
+function pf2_buildDetail(){
+  const tb = pf2$('pf2-detail-tbody');
+  if(!tb) return;
+  tb.innerHTML = '';
+  const occ = PF2_MTR_OCC;
+
+  PF2_ROOMS.forEach((r, i) => {
+    const { curOcc } = pf2_calcRoom(r);
+    const str_dim = r.mtrOn ? 'opacity:.3;' : '';
+    const mtr_dim = r.mtrOn ? '' : 'opacity:.3;';
+    const noCur   = !r.strCurADR;
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="font-family:var(--fn);font-size:.62rem;color:var(--cream);font-weight:400;padding:.28rem .55rem;white-space:nowrap;">${r.name}</td>
+
+      <td style="${str_dim}font-family:var(--fd);font-size:.82rem;color:var(--gold-lt);padding:.28rem .5rem;">
+        ${noCur ? '<span style="color:var(--muted);opacity:.4;">—</span>' : '$'+r.strCurADR}
+      </td>
+      <td style="${str_dim}font-family:var(--fn);font-size:.61rem;color:var(--muted);padding:.28rem .5rem;">
+        ${noCur ? '—' : curOcc+'%'}
+      </td>
+
+      <td style="font-family:var(--fd);font-size:.82rem;color:var(--gold-lt);padding:.28rem .5rem;">
+        ${r.strPropADR ? '$'+r.strPropADR : '<span style="color:var(--muted);opacity:.4;">—</span>'}
+      </td>
+      <td style="font-family:var(--fn);font-size:.61rem;color:var(--gold-lt);padding:.28rem .5rem;">
+        ${r.strPropADR ? r.strPropOcc+'%' : '—'}
+      </td>
+
+      <td style="${mtr_dim}font-family:var(--fd);font-size:.82rem;color:var(--pink);padding:.28rem .5rem;">
+        ${pf2_fmtD(r.mtrRate)}
+      </td>
+      <td style="${mtr_dim}font-family:var(--fn);font-size:.61rem;color:var(--pink);padding:.28rem .5rem;">
+        ${occ}%
+      </td>
+
+      <td style="padding:.28rem .4rem;text-align:center;">
+        <button class="pf-mode ${r.mtrOn?'mtr-mode':'str-mode'}" onclick="pf2_toggle(${i},this)">
+          ${r.mtrOn?'MTR':'STR'}
+        </button>
+      </td>`;
+    tb.appendChild(tr);
   });
-  const yrTotal = totalMo * 12;
-  document.getElementById('mtr-mo-total').textContent = fmtDolFull(totalMo);
-  document.getElementById('mtr-yr-total').textContent = fmtDolFull(yrTotal);
-  document.getElementById('mtr-mo-stat').textContent  = fmtDol(totalMo);
-  document.getElementById('mtr-yr-stat').textContent  = fmtDol(yrTotal);
-  document.getElementById('mtr-fee-stat').textContent = fmtDol(yrTotal * 0.20);
-  document.getElementById('mtr-2026-est').textContent = fmtDol(totalMo * 6);
-  document.getElementById('mtr-2027-full').textContent= fmtDol(yrTotal);
 }
 
-function mtrScen(occ, btn) {
-  mtrOcc = occ;
+function pf2_buildRev(){
+  const tb = pf2$('pf2-rev-tbody');
+  if(!tb) return;
+  tb.innerHTML = '';
+  let tCur=0, tMTR=0, tGap=0, tProp=0;
+
+  PF2_ROOMS.forEach(r => {
+    const { curRev, propMTR, propGap, propSTR } = pf2_calcRoom(r);
+    const propTotal = r.mtrOn ? propMTR+propGap : propSTR;
+    tCur  += curRev;
+    tMTR  += r.mtrOn ? propMTR : 0;
+    tGap  += r.mtrOn ? propGap : propSTR; // STR-only goes in "gap" column as STR proposed
+    tProp += propTotal;
+
+    // Short display name (first 2 words)
+    const short = r.name.replace('#','').trim().split(' ').slice(0,2).join(' ');
+
+    const mtrCell  = r.mtrOn
+      ? `<span style="font-family:var(--fd);font-size:.8rem;color:var(--pink);">${pf2_fmtK(propMTR)}</span>`
+      : `<span style="color:var(--muted);opacity:.35;">—</span>`;
+
+    const gapCell  = r.mtrOn
+      ? `<span style="font-family:var(--fd);font-size:.8rem;color:var(--mauve);">${pf2_fmtK(propGap)}</span>`
+      : `<span style="font-family:var(--fd);font-size:.8rem;color:var(--gold-lt);">${pf2_fmtK(propSTR)}</span>`;
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="font-family:var(--fn);font-size:.59rem;color:var(--cream2);padding:.26rem .55rem;white-space:nowrap;">${short}</td>
+      <td style="font-family:var(--fd);font-size:.8rem;color:var(--gold-lt);padding:.26rem .55rem;">${pf2_fmtK(curRev)}</td>
+      <td style="padding:.26rem .55rem;">${mtrCell}</td>
+      <td style="padding:.26rem .55rem;">${gapCell}</td>
+      <td style="font-family:var(--fd);font-size:.8rem;font-weight:600;color:var(--cream);padding:.26rem .55rem;">${pf2_fmtK(propTotal)}</td>`;
+    tb.appendChild(tr);
+  });
+
+  pf2$('pf2-tot-cur').textContent  = pf2_fmtK(tCur);
+  pf2$('pf2-tot-mtr').textContent  = pf2_fmtK(tMTR);
+  pf2$('pf2-tot-gap').textContent  = pf2_fmtK(tGap);
+  pf2$('pf2-tot-prop').textContent = pf2_fmtK(tProp);
+}
+
+function pf2_buildEvents(){
+  const tb = pf2$('pf2-evt-tbody');
+  if(!tb) return;
+  tb.innerHTML = '';
+  let tCur=0, tProp=0;
+
+  PF2_EVENTS.forEach(e => {
+    const curRev  = Math.round(e.curRate  * e.curEvMo);
+    const propRev = Math.round(e.propRate * e.propEvMo);
+    tCur  += curRev;
+    tProp += propRev;
+    const est = e.name === 'Whole House';
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="font-family:var(--fn);font-size:.61rem;color:var(--cream);padding:.26rem .5rem;">
+        ${e.name}${est?'<span style="font-size:.48rem;color:var(--gold);margin-left:.3rem;">est.</span>':''}<br>
+        <span style="color:var(--muted);font-size:.5rem;">${e.cap}</span>
+      </td>
+      <td style="font-family:var(--fd);font-size:.78rem;color:var(--muted);padding:.26rem .5rem;">${e.curRate ? pf2_fmtD(e.curRate) : '—'}</td>
+      <td style="font-family:var(--fn);font-size:.6rem;color:var(--muted);padding:.26rem .5rem;">${e.curEvMo > 0 ? e.curEvMo.toFixed(1)+'/mo' : '0'}</td>
+      <td style="font-family:var(--fd);font-size:.78rem;color:var(--gold-lt);padding:.26rem .5rem;">${pf2_fmtD(e.propRate)}${est?'<span style="font-size:.48rem;color:var(--gold);">*</span>':''}</td>
+      <td style="font-family:var(--fn);font-size:.6rem;color:var(--gold-lt);padding:.26rem .5rem;">${e.propEvMo}/mo</td>
+      <td style="font-family:var(--fd);font-size:.78rem;color:var(--muted);padding:.26rem .5rem;">${curRev > 0 ? pf2_fmtK(curRev) : '—'}</td>
+      <td style="font-family:var(--fd);font-size:.78rem;color:var(--pink);padding:.26rem .5rem;">${pf2_fmtK(propRev)}</td>`;
+    tb.appendChild(tr);
+  });
+
+  pf2$('pf2-evt-cur').textContent  = tCur > 0 ? pf2_fmtK(tCur) : '—';
+  pf2$('pf2-evt-prop').textContent = pf2_fmtK(tProp);
+}
+
+function pf2_rebuild(){ pf2_buildDetail(); pf2_buildRev(); }
+
+function pf2_toggle(i, btn){
+  PF2_ROOMS[i].mtrOn = !PF2_ROOMS[i].mtrOn;
+  btn.textContent = PF2_ROOMS[i].mtrOn ? 'MTR' : 'STR';
+  btn.className   = 'pf-mode ' + (PF2_ROOMS[i].mtrOn ? 'mtr-mode' : 'str-mode');
+  pf2_rebuild();
+}
+
+function pf2_setMtrOcc(occ, btn){
+  PF2_MTR_OCC = occ;
   btn.closest('div').querySelectorAll('.pf-scen').forEach(b => b.classList.remove('pf-scen-on'));
   btn.classList.add('pf-scen-on');
-  mtrBuild();
-}
-mtrBuild();
-
-// ── EVENTS MODEL ─────────────────────────────────────────────────
-let evtSessions = 5;
-
-function evtBuild() {
-  const s = evtSessions, w = 4;
-  const tsNew = 4800, tsOld = 3600;
-  const libNew = 2700, libOld = 1800;
-
-  const tsMo   = s * w * tsNew;  const tsYr  = tsMo  * 12;
-  const libMo  = s * w * libNew; const libYr = libMo  * 12;
-  const oldMo  = s * w * (tsOld + libOld);
-  const combMo = tsMo + libMo;   const combYr = combMo * 12;
-
-  document.getElementById('ts-mo').textContent   = fmtDol(tsMo);
-  document.getElementById('ts-yr').textContent   = fmtDol(tsYr);
-  document.getElementById('ts-vs').textContent   = '+' + fmtDol(s * w * (tsNew - tsOld)) + '/mo';
-  document.getElementById('lib-mo').textContent  = fmtDol(libMo);
-  document.getElementById('lib-yr').textContent  = fmtDol(libYr);
-  document.getElementById('lib-vs').textContent  = '+' + fmtDol(s * w * (libNew - libOld)) + '/mo';
-
-  document.getElementById('evt-mo-total').textContent  = fmtDol(combMo);
-  document.getElementById('evt-yr-total').textContent  = fmtDol(combYr);
-  document.getElementById('evt-fee-total').textContent = fmtDol(combYr * 0.20);
-  document.getElementById('evt-vs-current').textContent= '+' + fmtDol(combMo - oldMo) + '/mo';
-  document.getElementById('evt-2026-est').textContent  = '~' + fmtDol(combMo * 3); // Q3+ ≈ 3 mo ramp
-
-  const fbTsMo  = s * w * 8850;
-  const fbLibMo = s * w * 4425;
-  document.getElementById('fb-ts-mo').textContent    = fmtDol(fbTsMo);
-  document.getElementById('fb-lib-mo').textContent   = fmtDol(fbLibMo);
-  document.getElementById('fb-total-mo').textContent = fmtDol(fbTsMo + fbLibMo);
+  pf2_rebuild();
 }
 
-function evtScen(sessions, btn) {
-  evtSessions = sessions;
-  btn.closest('div').querySelectorAll('.pf-scen').forEach(b => b.classList.remove('pf-scen-on'));
-  btn.classList.add('pf-scen-on');
-  evtBuild();
-}
-evtBuild();
+// Initial render
+pf2_buildEvents();
+pf2_rebuild();
 
 </script>
 </body>
