@@ -659,63 +659,35 @@ h3 em { font-style:italic; color:var(--mauve); }
 
   <!-- ══ 9 · REVENUE PROFORMA ══════════════════════════════════ -->
   <div class="slide tl" style="padding:0;overflow:hidden;">
-    <div class="pf-scroll">
-      <div style="max-width:1260px;width:100%;margin:0 auto;">
+    <div class="pf-scroll" style="padding:1.3rem 2rem 1.5rem 5rem;display:flex;flex-direction:column;gap:0;">
+      <div style="width:100%;display:flex;flex-direction:column;gap:.65rem;">
 
-        <!-- ── Slide header ───────────────────────────────────── -->
-        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:.55rem;">
+        <!-- ── Header bar ─────────────────────────────────────── -->
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
           <div>
-            <div class="eyebrow" style="margin-bottom:.18rem;">Revenue Proforma · 2026–2027</div>
-            <h2 style="font-size:clamp(.9rem,1.4vw,1.25rem);line-height:1.1;">Three streams. <em>One</em> portfolio.</h2>
+            <div class="eyebrow" style="margin-bottom:.12rem;">Revenue Proforma · 2026–2027</div>
+            <h2 style="font-size:clamp(.82rem,1.25vw,1.1rem);line-height:1.1;">Three streams. <em>One</em> portfolio.</h2>
           </div>
-          <div style="display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;padding-bottom:.1rem;">
+          <div style="display:flex;align-items:center;gap:.35rem;flex-wrap:wrap;">
             <span class="pf-lbl" style="color:var(--muted);">MTR Occ:</span>
             <button class="pf-scen" onclick="pf2_setMtrOcc(70,this)">70%</button>
             <button class="pf-scen pf-scen-on" onclick="pf2_setMtrOcc(85,this)">85%</button>
             <button class="pf-scen" onclick="pf2_setMtrOcc(100,this)">100%</button>
-            <span style="font-family:var(--fn);font-size:.52rem;color:var(--muted);margin-left:.5rem;letter-spacing:.4px;">STR prop occ <strong style="color:var(--gold-lt);">75%</strong> · YTD annualized ×1.20</span>
+            <span style="font-family:var(--fn);font-size:.49rem;color:var(--muted);margin-left:.4rem;">STR target occ <strong style="color:var(--gold-lt);">75%</strong> · YTD annualized ×1.20</span>
           </div>
         </div>
-        <div class="rule wide" style="margin-bottom:.8rem;"></div>
+        <div class="rule wide" style="margin:0;"></div>
 
-        <!-- ── Three-box grid ─────────────────────────────────── -->
-        <div style="display:grid;grid-template-columns:1fr 430px;grid-template-rows:auto auto;gap:.8rem;align-items:start;">
+        <!-- ── TOP ROW: Revenue Overview (left) + Events (right) ── -->
+        <div style="display:grid;grid-template-columns:390px 1fr;gap:.65rem;align-items:start;">
 
-          <!-- ╔══ BOX 3 · DETAILED ROOM VIEW ═══════════════════╗ -->
-          <!-- spans both row slots on the left -->
-          <div class="card" style="grid-row:1/3;padding:.7rem .85rem;">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.55rem;gap:.5rem;flex-wrap:wrap;">
-              <div class="pf-lbl" style="color:var(--gold);">Detailed Room View</div>
-              <div style="font-family:var(--fn);font-size:.5rem;color:var(--muted);letter-spacing:.3px;">Toggle each room between STR-only and MTR+STR gap-fill modes</div>
-            </div>
+          <!-- ╔══ BOX 1 · REVENUE OVERVIEW — top left ══════════╗ -->
+          <div class="card gb" style="padding:.6rem .75rem;">
+            <div class="pf-lbl" style="color:var(--gold);margin-bottom:.4rem;">Revenue Overview · Annual</div>
             <table class="pf-tbl" style="width:100%;">
               <thead>
                 <tr>
-                  <th rowspan="2" style="width:110px;">Room</th>
-                  <th colspan="4" class="str-h" style="text-align:center;padding-bottom:.15rem;border-bottom:1px solid rgba(212,170,101,.25);">Short Term</th>
-                  <th colspan="2" class="mtr-h" style="text-align:center;padding-bottom:.15rem;border-bottom:1px solid rgba(237,121,233,.2);">Mid Term</th>
-                  <th rowspan="2" style="text-align:center;width:44px;">Mode</th>
-                </tr>
-                <tr>
-                  <th class="str-h">Cur ADR</th>
-                  <th class="str-h">Cur Occ</th>
-                  <th class="str-h">Prop ADR</th>
-                  <th class="str-h">Prop Occ</th>
-                  <th class="mtr-h">Mo Rate</th>
-                  <th class="mtr-h">Occ %</th>
-                </tr>
-              </thead>
-              <tbody id="pf2-detail-tbody"></tbody>
-            </table>
-          </div>
-
-          <!-- ╔══ BOX 1 · REVENUE OVERVIEW ═════════════════════╗ -->
-          <div class="card gb" style="grid-row:1;padding:.7rem .85rem;">
-            <div class="pf-lbl" style="color:var(--gold);margin-bottom:.55rem;">Revenue Overview · Annual</div>
-            <table class="pf-tbl" style="width:100%;">
-              <thead>
-                <tr>
-                  <th style="width:78px;">Room</th>
+                  <th style="width:68px;">Room</th>
                   <th class="str-h">Current</th>
                   <th class="mtr-h">MTR Annual</th>
                   <th style="color:var(--mauve);">STR Annual</th>
@@ -725,27 +697,27 @@ h3 em { font-style:italic; color:var(--mauve); }
               <tbody id="pf2-rev-tbody"></tbody>
               <tfoot>
                 <tr>
-                  <td style="font-family:var(--fn);font-size:.58rem;font-weight:700;color:var(--cream);letter-spacing:.5px;padding:.32rem .55rem;">Portfolio</td>
-                  <td style="font-family:var(--fd);font-size:.9rem;color:var(--gold-lt);padding:.32rem .55rem;" id="pf2-tot-cur">—</td>
-                  <td style="font-family:var(--fd);font-size:.9rem;color:var(--pink);padding:.32rem .55rem;" id="pf2-tot-mtr">—</td>
-                  <td style="font-family:var(--fd);font-size:.9rem;color:var(--mauve);padding:.32rem .55rem;" id="pf2-tot-gap">—</td>
-                  <td style="font-family:var(--fd);font-size:.9rem;font-weight:600;color:var(--cream);padding:.32rem .55rem;" id="pf2-tot-prop">—</td>
+                  <td style="font-family:var(--fn);font-size:.55rem;font-weight:700;color:var(--cream);letter-spacing:.5px;padding:.26rem .45rem;">Portfolio</td>
+                  <td style="font-family:var(--fd);font-size:.82rem;color:var(--gold-lt);padding:.26rem .45rem;" id="pf2-tot-cur">—</td>
+                  <td style="font-family:var(--fd);font-size:.82rem;color:var(--pink);padding:.26rem .45rem;" id="pf2-tot-mtr">—</td>
+                  <td style="font-family:var(--fd);font-size:.82rem;color:var(--mauve);padding:.26rem .45rem;" id="pf2-tot-gap">—</td>
+                  <td style="font-family:var(--fd);font-size:.82rem;font-weight:600;color:var(--cream);padding:.26rem .45rem;" id="pf2-tot-prop">—</td>
                 </tr>
               </tfoot>
             </table>
           </div>
 
-          <!-- ╔══ BOX 2 · EVENTS OVERVIEW ══════════════════════╗ -->
-          <div class="card" style="grid-row:2;border-color:rgba(237,121,233,.2);padding:.7rem .85rem;">
-            <div class="pf-lbl" style="color:var(--pink);margin-bottom:.55rem;">Events Overview · Lady Mendl's · Monthly</div>
+          <!-- ╔══ BOX 2 · EVENTS OVERVIEW — top right ══════════╗ -->
+          <div class="card" style="border-color:rgba(237,121,233,.2);padding:.6rem .75rem;">
+            <div class="pf-lbl" style="color:var(--pink);margin-bottom:.4rem;">Events Overview · Lady Mendl's · Monthly</div>
             <table class="pf-tbl" style="width:100%;">
               <thead>
                 <tr>
-                  <th>Space</th>
+                  <th style="width:88px;">Space</th>
                   <th>Cur Rate</th>
-                  <th>Cur/mo</th>
+                  <th>Cur / mo</th>
                   <th class="str-h">Prop Rate</th>
-                  <th class="str-h">Prop/mo</th>
+                  <th class="str-h">Prop / mo</th>
                   <th>Cur Rev</th>
                   <th class="mtr-h">Prop Rev</th>
                 </tr>
@@ -753,18 +725,57 @@ h3 em { font-style:italic; color:var(--mauve); }
               <tbody id="pf2-evt-tbody"></tbody>
               <tfoot>
                 <tr>
-                  <td colspan="5" style="font-family:var(--fn);font-size:.58rem;font-weight:700;color:var(--cream);letter-spacing:.4px;padding:.3rem .55rem;">Monthly Total</td>
-                  <td style="font-family:var(--fd);font-size:.88rem;color:var(--gold-lt);padding:.3rem .55rem;" id="pf2-evt-cur">—</td>
-                  <td style="font-family:var(--fd);font-size:.88rem;color:var(--pink);padding:.3rem .55rem;" id="pf2-evt-prop">—</td>
+                  <td colspan="5" style="font-family:var(--fn);font-size:.55rem;font-weight:700;color:var(--cream);letter-spacing:.4px;padding:.24rem .45rem;">Monthly Total</td>
+                  <td style="font-family:var(--fd);font-size:.82rem;color:var(--gold-lt);padding:.24rem .45rem;" id="pf2-evt-cur">—</td>
+                  <td style="font-family:var(--fd);font-size:.82rem;color:var(--pink);padding:.24rem .45rem;" id="pf2-evt-prop">—</td>
                 </tr>
               </tfoot>
             </table>
-            <div style="font-family:var(--fn);font-size:.5rem;color:var(--muted);margin-top:.45rem;line-height:1.6;letter-spacing:.2px;">
+            <div style="font-family:var(--fn);font-size:.47rem;color:var(--muted);margin-top:.38rem;line-height:1.55;letter-spacing:.15px;">
               20 events YTD (word-of-mouth) · est. 12 Tea Salon / 8 Library · Whole House rate estimated at $25,000/buyout · Proposed: Giggster, PartySlate, Peerspace, Splacer + film &amp; production
             </div>
           </div>
 
+        </div><!-- /top row -->
+
+        <!-- ── BOTTOM ROW: Full-width Detailed Room View ───────── -->
+        <!-- ╔══ BOX 3 · DETAILED ROOM VIEW — full width ══════════╗ -->
+        <div class="card" style="padding:.6rem .75rem;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.4rem;gap:.5rem;flex-wrap:wrap;">
+            <div class="pf-lbl" style="color:var(--gold);">Detailed Room View</div>
+            <div style="font-family:var(--fn);font-size:.47rem;color:var(--muted);letter-spacing:.25px;">Toggle each room · STR-only or MTR primary + STR gap-fill · Revenue Overview updates live</div>
+          </div>
+          <table class="pf-tbl" style="width:100%;table-layout:fixed;">
+            <colgroup>
+              <col style="width:14%;">
+              <col style="width:9%;">
+              <col style="width:8%;">
+              <col style="width:9%;">
+              <col style="width:8%;">
+              <col style="width:10%;">
+              <col style="width:8%;">
+              <col style="width:7%;">
+            </colgroup>
+            <thead>
+              <tr>
+                <th rowspan="2">Room</th>
+                <th colspan="4" class="str-h" style="text-align:center;padding-bottom:.1rem;border-bottom:1px solid rgba(212,170,101,.25);">Short Term</th>
+                <th colspan="2" class="mtr-h" style="text-align:center;padding-bottom:.1rem;border-bottom:1px solid rgba(237,121,233,.2);">Mid Term</th>
+                <th rowspan="2" style="text-align:center;">Mode</th>
+              </tr>
+              <tr>
+                <th class="str-h">Cur ADR</th>
+                <th class="str-h">Cur Occ</th>
+                <th class="str-h">Prop ADR</th>
+                <th class="str-h">Prop Occ</th>
+                <th class="mtr-h">Mo Rate</th>
+                <th class="mtr-h">Occ %</th>
+              </tr>
+            </thead>
+            <tbody id="pf2-detail-tbody"></tbody>
+          </table>
         </div>
+
       </div>
     </div>
   </div>
@@ -920,30 +931,30 @@ function pf2_buildDetail(){
 
     const tr = document.createElement('tr');
     tr.innerHTML = `
-      <td style="font-family:var(--fn);font-size:.62rem;color:var(--cream);font-weight:400;padding:.28rem .55rem;white-space:nowrap;">${r.name}</td>
+      <td style="font-family:var(--fn);font-size:.68rem;color:var(--cream);font-weight:400;padding:.22rem .5rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${r.name}</td>
 
-      <td style="${str_dim}font-family:var(--fd);font-size:.82rem;color:var(--gold-lt);padding:.28rem .5rem;">
+      <td style="${str_dim}font-family:var(--fd);font-size:.78rem;color:var(--gold-lt);padding:.22rem .45rem;">
         ${noCur ? '<span style="color:var(--muted);opacity:.4;">—</span>' : '$'+r.strCurADR}
       </td>
-      <td style="${str_dim}font-family:var(--fn);font-size:.61rem;color:var(--muted);padding:.28rem .5rem;">
+      <td style="${str_dim}font-family:var(--fn);font-size:.64rem;color:var(--muted);padding:.22rem .45rem;">
         ${noCur ? '—' : curOcc+'%'}
       </td>
 
-      <td style="font-family:var(--fd);font-size:.82rem;color:var(--gold-lt);padding:.28rem .5rem;">
+      <td style="font-family:var(--fd);font-size:.78rem;color:var(--gold-lt);padding:.22rem .45rem;">
         ${r.strPropADR ? '$'+r.strPropADR : '<span style="color:var(--muted);opacity:.4;">—</span>'}
       </td>
-      <td style="font-family:var(--fn);font-size:.61rem;color:var(--gold-lt);padding:.28rem .5rem;">
+      <td style="font-family:var(--fn);font-size:.64rem;color:var(--gold-lt);padding:.22rem .45rem;">
         ${r.strPropADR ? r.strPropOcc+'%' : '—'}
       </td>
 
-      <td style="${mtr_dim}font-family:var(--fd);font-size:.82rem;color:var(--pink);padding:.28rem .5rem;">
+      <td style="${mtr_dim}font-family:var(--fd);font-size:.78rem;color:var(--pink);padding:.22rem .45rem;">
         ${pf2_fmtD(r.mtrRate)}
       </td>
-      <td style="${mtr_dim}font-family:var(--fn);font-size:.61rem;color:var(--pink);padding:.28rem .5rem;">
+      <td style="${mtr_dim}font-family:var(--fn);font-size:.64rem;color:var(--pink);padding:.22rem .45rem;">
         ${occ}%
       </td>
 
-      <td style="padding:.28rem .4rem;text-align:center;">
+      <td style="padding:.22rem .35rem;text-align:center;">
         <button class="pf-mode ${r.mtrOn?'mtr-mode':'str-mode'}" onclick="pf2_toggle(${i},this)">
           ${r.mtrOn?'MTR':'STR'}
         </button>
@@ -966,24 +977,24 @@ function pf2_buildRev(){
     tGap  += r.mtrOn ? propGap : propSTR; // STR-only goes in "gap" column as STR proposed
     tProp += propTotal;
 
-    // Short display name (first 2 words)
-    const short = r.name.replace('#','').trim().split(' ').slice(0,2).join(' ');
+    // Short display: room number + first name word
+    const short = r.name.split(' ').slice(0,2).join(' ');
 
     const mtrCell  = r.mtrOn
-      ? `<span style="font-family:var(--fd);font-size:.8rem;color:var(--pink);">${pf2_fmtK(propMTR)}</span>`
-      : `<span style="color:var(--muted);opacity:.35;">—</span>`;
+      ? `<span style="font-family:var(--fd);font-size:.76rem;color:var(--pink);">${pf2_fmtK(propMTR)}</span>`
+      : `<span style="color:var(--muted);opacity:.35;font-size:.72rem;">—</span>`;
 
     const gapCell  = r.mtrOn
-      ? `<span style="font-family:var(--fd);font-size:.8rem;color:var(--mauve);">${pf2_fmtK(propGap)}</span>`
-      : `<span style="font-family:var(--fd);font-size:.8rem;color:var(--gold-lt);">${pf2_fmtK(propSTR)}</span>`;
+      ? `<span style="font-family:var(--fd);font-size:.76rem;color:var(--mauve);">${pf2_fmtK(propGap)}</span>`
+      : `<span style="font-family:var(--fd);font-size:.76rem;color:var(--gold-lt);">${pf2_fmtK(propSTR)}</span>`;
 
     const tr = document.createElement('tr');
     tr.innerHTML = `
-      <td style="font-family:var(--fn);font-size:.59rem;color:var(--cream2);padding:.26rem .55rem;white-space:nowrap;">${short}</td>
-      <td style="font-family:var(--fd);font-size:.8rem;color:var(--gold-lt);padding:.26rem .55rem;">${pf2_fmtK(curRev)}</td>
-      <td style="padding:.26rem .55rem;">${mtrCell}</td>
-      <td style="padding:.26rem .55rem;">${gapCell}</td>
-      <td style="font-family:var(--fd);font-size:.8rem;font-weight:600;color:var(--cream);padding:.26rem .55rem;">${pf2_fmtK(propTotal)}</td>`;
+      <td style="font-family:var(--fn);font-size:.58rem;color:var(--cream2);padding:.22rem .45rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${short}</td>
+      <td style="font-family:var(--fd);font-size:.76rem;color:var(--gold-lt);padding:.22rem .45rem;">${pf2_fmtK(curRev)}</td>
+      <td style="padding:.22rem .45rem;">${mtrCell}</td>
+      <td style="padding:.22rem .45rem;">${gapCell}</td>
+      <td style="font-family:var(--fd);font-size:.76rem;font-weight:600;color:var(--cream);padding:.22rem .45rem;">${pf2_fmtK(propTotal)}</td>`;
     tb.appendChild(tr);
   });
 
