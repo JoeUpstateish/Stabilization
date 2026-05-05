@@ -203,7 +203,7 @@ h3 em { font-style:italic; color:var(--mauve); }
 .vs-d { font-family:var(--fd); font-style:italic; font-size:1.7rem; color:var(--muted); opacity:.38; }
 
 /* ── PROFORMA ────────────────────────────────────────────────── */
-.pf-scroll { width:100%; height:100%; overflow-y:auto; padding:.5rem 2rem 4rem 9.5rem; scrollbar-width:thin; scrollbar-color:rgba(237,121,233,.2) transparent; }
+.pf-scroll { width:100%; height:100%; overflow-y:auto; padding:3.5rem 2rem 3.5rem 9.5rem; scrollbar-width:thin; scrollbar-color:rgba(237,121,233,.2) transparent; }
 .pf-scroll::-webkit-scrollbar { width:4px; }
 .pf-scroll::-webkit-scrollbar-track { background:transparent; }
 .pf-scroll::-webkit-scrollbar-thumb { background:rgba(237,121,233,.2); border-radius:4px; }
@@ -679,7 +679,7 @@ h3 em { font-style:italic; color:var(--mauve); }
         <div class="rule wide" style="margin:0;"></div>
 
         <!-- ── TOP ROW: Revenue Overview (left) + Events (right) ── -->
-        <div style="display:grid;grid-template-columns:340px 1fr;gap:.4rem;align-items:start;">
+        <div style="display:grid;grid-template-columns:390px 1fr;gap:.4rem;align-items:stretch;">
 
           <!-- ╔══ BOX 1 · REVENUE OVERVIEW — top left ══════════╗ -->
           <div class="card gb" style="padding:.6rem .75rem;">
@@ -691,7 +691,7 @@ h3 em { font-style:italic; color:var(--mauve); }
                   <th class="str-h">Current</th>
                   <th class="mtr-h">MTR Annual</th>
                   <th style="color:var(--mauve);">STR Annual</th>
-                  <th>Total Prop</th>
+                  <th>Total</th>
                 </tr>
               </thead>
               <tbody id="pf2-rev-tbody"></tbody>
@@ -731,7 +731,7 @@ h3 em { font-style:italic; color:var(--mauve); }
                 </tr>
               </tfoot>
             </table>
-            <div style="font-family:var(--fn);font-size:.47rem;color:var(--muted);margin-top:.38rem;line-height:1.55;letter-spacing:.15px;">
+            <div style="font-family:var(--fn);font-size:.47rem;color:var(--muted);margin-top:.12rem;line-height:1.55;letter-spacing:.15px;">
               20 events YTD (word-of-mouth) · est. 12 Tea Salon / 8 Library · Whole House rate estimated at $25,000/buyout · Proposed: Giggster, PartySlate, Peerspace, Splacer + film &amp; production
             </div>
           </div>
@@ -747,14 +747,14 @@ h3 em { font-style:italic; color:var(--mauve); }
           </div>
           <table class="pf-tbl" style="width:100%;table-layout:fixed;">
             <colgroup>
-              <col style="width:18%;">
-              <col style="width:10%;">
-              <col style="width:9%;">
+              <col style="width:22%;">
               <col style="width:11%;">
-              <col style="width:9%;">
+              <col style="width:10%;">
               <col style="width:13%;">
-              <col style="width:9%;">
-              <col style="width:21%;">
+              <col style="width:10%;">
+              <col style="width:14%;">
+              <col style="width:10%;">
+              <col style="width:10%;">
             </colgroup>
             <thead>
               <tr>
@@ -931,26 +931,26 @@ function pf2_buildDetail(){
 
     const tr = document.createElement('tr');
     tr.innerHTML = `
-      <td style="font-family:var(--fn);font-size:.68rem;color:var(--cream);font-weight:400;padding:.16rem .35rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${r.name}</td>
+      <td style="font-family:var(--fn);font-size:.6rem;color:var(--cream);font-weight:400;padding:.13rem .3rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${r.name}</td>
 
-      <td style="${str_dim}font-family:var(--fd);font-size:.78rem;color:var(--gold-lt);padding:.16rem .35rem;">
+      <td style="${str_dim}font-family:var(--fd);font-size:.78rem;color:var(--gold-lt);padding:.13rem .3rem;">
         ${noCur ? '<span style="color:var(--muted);opacity:.4;">—</span>' : '$'+r.strCurADR}
       </td>
-      <td style="${str_dim}font-family:var(--fn);font-size:.64rem;color:var(--muted);padding:.16rem .35rem;">
+      <td style="${str_dim}font-family:var(--fn);font-size:.64rem;color:var(--muted);padding:.13rem .3rem;">
         ${noCur ? '—' : curOcc+'%'}
       </td>
 
-      <td style="font-family:var(--fd);font-size:.78rem;color:var(--gold-lt);padding:.16rem .35rem;">
+      <td style="font-family:var(--fd);font-size:.78rem;color:var(--gold-lt);padding:.13rem .3rem;">
         ${r.strPropADR ? '$'+r.strPropADR : '<span style="color:var(--muted);opacity:.4;">—</span>'}
       </td>
-      <td style="font-family:var(--fn);font-size:.64rem;color:var(--gold-lt);padding:.16rem .35rem;">
+      <td style="font-family:var(--fn);font-size:.64rem;color:var(--gold-lt);padding:.13rem .3rem;">
         ${r.strPropADR ? r.strPropOcc+'%' : '—'}
       </td>
 
-      <td style="${mtr_dim}font-family:var(--fd);font-size:.78rem;color:var(--pink);padding:.16rem .35rem;">
+      <td style="${mtr_dim}font-family:var(--fd);font-size:.78rem;color:var(--pink);padding:.13rem .3rem;">
         ${pf2_fmtD(r.mtrRate)}
       </td>
-      <td style="${mtr_dim}font-family:var(--fn);font-size:.64rem;color:var(--pink);padding:.16rem .35rem;">
+      <td style="${mtr_dim}font-family:var(--fn);font-size:.64rem;color:var(--pink);padding:.13rem .3rem;">
         ${occ}%
       </td>
 
@@ -990,11 +990,11 @@ function pf2_buildRev(){
 
     const tr = document.createElement('tr');
     tr.innerHTML = `
-      <td style="font-family:var(--fn);font-size:.58rem;color:var(--cream2);padding:.16rem .35rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${short}</td>
-      <td style="font-family:var(--fd);font-size:.76rem;color:var(--gold-lt);padding:.16rem .35rem;">${pf2_fmtK(curRev)}</td>
-      <td style="padding:.16rem .35rem;">${mtrCell}</td>
-      <td style="padding:.16rem .35rem;">${gapCell}</td>
-      <td style="font-family:var(--fd);font-size:.76rem;font-weight:600;color:var(--cream);padding:.16rem .35rem;">${pf2_fmtK(propTotal)}</td>`;
+      <td style="font-family:var(--fn);font-size:.58rem;color:var(--cream2);padding:.13rem .3rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${short}</td>
+      <td style="font-family:var(--fd);font-size:.76rem;color:var(--gold-lt);padding:.13rem .3rem;">${pf2_fmtK(curRev)}</td>
+      <td style="padding:.13rem .3rem;">${mtrCell}</td>
+      <td style="padding:.13rem .3rem;">${gapCell}</td>
+      <td style="font-family:var(--fd);font-size:.76rem;font-weight:600;color:var(--cream);padding:.13rem .3rem;">${pf2_fmtK(propTotal)}</td>`;
     tb.appendChild(tr);
   });
 
