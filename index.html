@@ -220,8 +220,8 @@ h3 em { font-style:italic; color:var(--mauve); }
 .pf-lbl { font-family:var(--fn); font-size:.52rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; }
 
 .pf-tbl { width:100%; border-collapse:collapse; }
-.pf-tbl th { font-family:var(--fn); font-size:.6rem; font-weight:700; letter-spacing:1.6px; text-transform:uppercase; color:var(--gold); padding:.3rem .65rem; text-align:left; border-bottom:1px solid rgba(191,145,66,.2); white-space:nowrap; }
-.pf-tbl td { font-family:var(--fn); font-size:.75rem; font-weight:300; color:var(--cream2); padding:.3rem .65rem; border-bottom:1px solid rgba(237,121,233,.05); }
+.pf-tbl th { font-family:var(--fn); font-size:.52rem; font-weight:700; letter-spacing:1.6px; text-transform:uppercase; color:var(--gold); padding:.18rem .4rem; text-align:left; border-bottom:1px solid rgba(191,145,66,.2); white-space:nowrap; }
+.pf-tbl td { font-family:var(--fn); font-size:.62rem; font-weight:300; color:var(--cream2); padding:.18rem .4rem; border-bottom:1px solid rgba(237,121,233,.05); }
 .pf-tbl tr.hi td { background:rgba(237,121,233,.05); }
 .pf-tbl tfoot td { border-top:1px solid rgba(191,145,66,.22); border-bottom:none; }
 .pf-tbl th.str-h { color:var(--gold-lt); }
@@ -659,11 +659,11 @@ h3 em { font-style:italic; color:var(--mauve); }
 
   <!-- ══ 9 · REVENUE PROFORMA ══════════════════════════════════ -->
   <div class="slide tl" style="padding:0;overflow:hidden;">
-    <div class="pf-scroll" style="padding:1.3rem 2rem 1.5rem 5rem;display:flex;flex-direction:column;gap:0;">
-      <div style="width:100%;display:flex;flex-direction:column;gap:.65rem;">
+    <div class="pf-scroll" style="padding:.8rem 1.5rem 1rem 7rem;display:flex;flex-direction:column;gap:0;">
+      <div style="width:100%;display:flex;flex-direction:column;gap:.35rem;">
 
         <!-- ── Header bar ─────────────────────────────────────── -->
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-top:.3rem;">
           <div>
             <div class="eyebrow" style="margin-bottom:.12rem;">Revenue Proforma · 2026–2027</div>
             <h2 style="font-size:clamp(.82rem,1.25vw,1.1rem);line-height:1.1;">Three streams. <em>One</em> portfolio.</h2>
@@ -679,7 +679,7 @@ h3 em { font-style:italic; color:var(--mauve); }
         <div class="rule wide" style="margin:0;"></div>
 
         <!-- ── TOP ROW: Revenue Overview (left) + Events (right) ── -->
-        <div style="display:grid;grid-template-columns:390px 1fr;gap:.65rem;align-items:start;">
+        <div style="display:grid;grid-template-columns:340px 1fr;gap:.4rem;align-items:start;">
 
           <!-- ╔══ BOX 1 · REVENUE OVERVIEW — top left ══════════╗ -->
           <div class="card gb" style="padding:.6rem .75rem;">
@@ -931,26 +931,26 @@ function pf2_buildDetail(){
 
     const tr = document.createElement('tr');
     tr.innerHTML = `
-      <td style="font-family:var(--fn);font-size:.68rem;color:var(--cream);font-weight:400;padding:.22rem .5rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${r.name}</td>
+      <td style="font-family:var(--fn);font-size:.68rem;color:var(--cream);font-weight:400;padding:.16rem .35rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${r.name}</td>
 
-      <td style="${str_dim}font-family:var(--fd);font-size:.78rem;color:var(--gold-lt);padding:.22rem .45rem;">
+      <td style="${str_dim}font-family:var(--fd);font-size:.78rem;color:var(--gold-lt);padding:.16rem .35rem;">
         ${noCur ? '<span style="color:var(--muted);opacity:.4;">—</span>' : '$'+r.strCurADR}
       </td>
-      <td style="${str_dim}font-family:var(--fn);font-size:.64rem;color:var(--muted);padding:.22rem .45rem;">
+      <td style="${str_dim}font-family:var(--fn);font-size:.64rem;color:var(--muted);padding:.16rem .35rem;">
         ${noCur ? '—' : curOcc+'%'}
       </td>
 
-      <td style="font-family:var(--fd);font-size:.78rem;color:var(--gold-lt);padding:.22rem .45rem;">
+      <td style="font-family:var(--fd);font-size:.78rem;color:var(--gold-lt);padding:.16rem .35rem;">
         ${r.strPropADR ? '$'+r.strPropADR : '<span style="color:var(--muted);opacity:.4;">—</span>'}
       </td>
-      <td style="font-family:var(--fn);font-size:.64rem;color:var(--gold-lt);padding:.22rem .45rem;">
+      <td style="font-family:var(--fn);font-size:.64rem;color:var(--gold-lt);padding:.16rem .35rem;">
         ${r.strPropADR ? r.strPropOcc+'%' : '—'}
       </td>
 
-      <td style="${mtr_dim}font-family:var(--fd);font-size:.78rem;color:var(--pink);padding:.22rem .45rem;">
+      <td style="${mtr_dim}font-family:var(--fd);font-size:.78rem;color:var(--pink);padding:.16rem .35rem;">
         ${pf2_fmtD(r.mtrRate)}
       </td>
-      <td style="${mtr_dim}font-family:var(--fn);font-size:.64rem;color:var(--pink);padding:.22rem .45rem;">
+      <td style="${mtr_dim}font-family:var(--fn);font-size:.64rem;color:var(--pink);padding:.16rem .35rem;">
         ${occ}%
       </td>
 
@@ -990,11 +990,11 @@ function pf2_buildRev(){
 
     const tr = document.createElement('tr');
     tr.innerHTML = `
-      <td style="font-family:var(--fn);font-size:.58rem;color:var(--cream2);padding:.22rem .45rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${short}</td>
-      <td style="font-family:var(--fd);font-size:.76rem;color:var(--gold-lt);padding:.22rem .45rem;">${pf2_fmtK(curRev)}</td>
-      <td style="padding:.22rem .45rem;">${mtrCell}</td>
-      <td style="padding:.22rem .45rem;">${gapCell}</td>
-      <td style="font-family:var(--fd);font-size:.76rem;font-weight:600;color:var(--cream);padding:.22rem .45rem;">${pf2_fmtK(propTotal)}</td>`;
+      <td style="font-family:var(--fn);font-size:.58rem;color:var(--cream2);padding:.16rem .35rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${short}</td>
+      <td style="font-family:var(--fd);font-size:.76rem;color:var(--gold-lt);padding:.16rem .35rem;">${pf2_fmtK(curRev)}</td>
+      <td style="padding:.16rem .35rem;">${mtrCell}</td>
+      <td style="padding:.16rem .35rem;">${gapCell}</td>
+      <td style="font-family:var(--fd);font-size:.76rem;font-weight:600;color:var(--cream);padding:.16rem .35rem;">${pf2_fmtK(propTotal)}</td>`;
     tb.appendChild(tr);
   });
 
